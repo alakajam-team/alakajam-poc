@@ -3,9 +3,8 @@
   "version": "2.0.0-dev",
   "description": "Website powering the Alakajam! game making community",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist_server/index.js",
   "scripts": {
-    "start": "node dist/index.js",
     "lint": "tslint --project . --fix"
   },
   "repository": {
@@ -16,9 +15,13 @@
     "url": "https://github.com/alakajam-team/alakajam/issues"
   },
   "dependencies": {
+    "@types/express-promise-router": "^2.0.0",
     "express": "^4.16.3",
+    "express-nunjucks": "^2.2.3",
+    "express-promise-router": "^3.0.2",
     "knex": "^0.14.6",
     "moment": "^2.22.1",
+    "nunjucks": "^3.1.2",
     "optional-require": "^1.0.0",
     "sqlite3": "^4.0.0",
     "typeorm": "^0.2.5",
@@ -26,7 +29,9 @@
   },
   "optionalDependencies": {},
   "devDependencies": {
+    "@types/express": "^4.11.1",
     "@types/node": "^10.1.0",
+    "@types/nunjucks": "^3.0.0",
     "@types/winston": "^2.3.9"
   },
   "browserslist": [

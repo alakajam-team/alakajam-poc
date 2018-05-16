@@ -7,19 +7,25 @@
 import * as fs from "fs";
 import * as optionalRequire from "optional-require";
 import * as path from "path";
-import * as appConfigSample from "../../appconfig.sample.json";
+import * as appConfigSample from "../../config.sample.json";
 import constants from "../constants";
 import log from "./log";
 
-// Config type definition
 export class AppConfig {
+
     public serverPort: number;
+
     public serverRootUrl: string;
 
     /**
      * Verbose level among 'none', 'error', 'warn', 'info', 'debug'
      */
     public logLevel: string;
+
+    /**
+     * Enables Express debug mode to trace request routes & timing
+     */
+    public debugTraceRequests: boolean;
 }
 
 // Load or create user config

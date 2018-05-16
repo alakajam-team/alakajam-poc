@@ -67,7 +67,8 @@ export class Log {
                 const locInfo = line.replace(/(.*\()/g, "")
                 .replace(process.cwd(), "")
                 .split(/[ :]/g);
-                location = locInfo[locInfo.length - 3].replace("\\dist\\", "") + ":" + locInfo[locInfo.length - 2];
+                location = locInfo[locInfo.length - 3]
+                    .replace(/\\(dist[_a-z]+|src)\\/g, "") + ":" + locInfo[locInfo.length - 2];
                 break;
             }
         }
