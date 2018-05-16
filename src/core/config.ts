@@ -7,26 +7,27 @@
 import * as fs from "fs";
 import * as optionalRequire from "optional-require";
 import * as path from "path";
-import * as appConfigSample from "../../appconfig.sample";
+import * as appConfigSample from "../../appconfig.sample.json";
+import constants from "../constants";
 import log from "./log";
 
-const APP_CONFIG_PATH = path.join(__dirname, "../../appconfig.js");
-const APP_CONFIG_SAMPLE_PATH = path.join(__dirname, "../../appconfig.sample.js");
+// Config type definition
+export class AppConfig {
+    public serverPort: number;
+    public serverRootUrl: string;
 
-// Module declaration (TOASTY: how would I put that in a separate .d.ts file?)
-declare module "./config" {
-    export const SERVER_PORT: number;
+    /**
+     * Verbose level among 'none', 'error', 'warn', 'info', 'debug'
+     */
+    public logLevel: string;
 }
 
-// Load user config
-const appConfig = optionalRequire(require)(APP_CONFIG_PATH);
-
-// Create config file if missing
-log.info(typeof appConfig);
+// Load or create user config
+const appConfig = optionalRequire(require)(constants.PATH_APP_CONFIG);
 if (!appConfig) {
-    const sampleConfigBuffer = fs.readFileSync(APP_CONFIG_SAMPLE_PATH);
-    fs.writeFileSync(APP_CONFIG_PATH, sampleConfigBuffer);
-    log.info(APP_CONFIG_PATH, "initialized with sample values");
+    const sampleConfigBuffer = fs.readFileSync(constants.PATH_APP_CONFIG_SAMPLE);
+    fs.writeFileSync(constants.PATH_APP_CONFIG, sampleConfigBuffer);
+    log.info(constants.PATH_APP_CONFIG, "initialized with sample values");
 } else {
     // Use default values if some keys are missing
     for (const key in appConfigSample) {
@@ -38,5 +39,4 @@ if (!appConfig) {
     }
 }
 
-// Expose either user config or the sample one
-export default (appConfig || appConfigSample);
+export default appConfig as AppConfig;

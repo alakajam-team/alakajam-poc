@@ -1,0 +1,6 @@
+{
+  "serverPort": 8000,
+  "serverRootUrl": "http://localhost:8000",
+
+  "logLevel": "debug"
+}
