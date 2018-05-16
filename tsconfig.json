@@ -5,11 +5,9 @@
       "outDir": "dist",
       "sourceMap": true
     },
-   /* "files": [
-      "./node_modules/@types/mocha/index.d.ts"
-    ],*/
     "include": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "src/**/*.d.ts"
     ],
     "exclude": [
       "node_modules"

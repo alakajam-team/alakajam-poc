@@ -1,3 +1,4 @@
+import config from "./core/config";
+import log from "./core/log";
 
-let test: string = "hello world"
-console.log(test)
+log.info(config.SERVER_PORT.toString());

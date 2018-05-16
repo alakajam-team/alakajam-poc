@@ -1,6 +1,6 @@
 ## Intro
 
-An work-in-progress proof of concept for an improved Alakajam! site architecture. Goals:
+An early proof of concept for an improved Alakajam! site architecture. Goals:
 
 * Switch to TypeScript
 * Improve toolchain for JS/CSS build (faster dev loop in development, faster boot in production)
@@ -15,8 +15,18 @@ An work-in-progress proof of concept for an improved Alakajam! site architecture
 * [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
 * Try simplifying dependencies (client-side: code editors, icons, etc.)
 
+## Upgrade notes
+
+* `promisify-node` can be replaced with the now native `util.promisify()`
+
 ## Setup
 
-* `npm install -g typescript`
+* `npm install -g typescript tslint knex`
 * `tsc`
 * `node dist/index.js`
+
+## Troubleshooting 
+
+* `EPERM: operation not permitted, mkdir '...\alakajam-poc\node_modules\@types`
+
+This can happen on Windows on older Node versions. Upgrade Node (not just npm) to fix this.
