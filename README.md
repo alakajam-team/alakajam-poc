@@ -3,7 +3,7 @@
 An early proof of concept for an improved Alakajam! site architecture. Goals:
 
 * Switch to TypeScript
-* Improve toolchain for JS/CSS build (faster dev loop in development, faster boot in production)
+* Improve toolchain for JS/CSS build (faster build in development, faster boot in production)
 * Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
 * Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
 * Better organization of service layers 
@@ -19,11 +19,20 @@ An early proof of concept for an improved Alakajam! site architecture. Goals:
 
 * `promisify-node` can be replaced with the now native `util.promisify()`
 
-## Setup
+## Initial setup
 
 * `npm install -g typescript tslint knex`
 * `tsc`
-* `node dist/index.js`
+* `npm run start`
+
+## Developer tools
+
+* `npm install -g browser-refresh`
+
+1. On a first console, launch: `tsc --watch`
+2. On a second console, launch: `browser-refresh`
+
+The server will restart by itself upon changing the code.
 
 ## Troubleshooting 
 
