@@ -37,6 +37,11 @@ The server will restart by itself upon changing the code.
 ### Code upgrade
 
 * `promisify-node` can be replaced with the now native `util.promisify()`
+* Rename `.css` files to `.pcss` for correct code highlighting (in Visual Studio Code in particular)
+
+### Other ideas
+
+* Check [Lost](http://lostgrid.org/docs.html) grid system
 
 ## Troubleshooting 
 
