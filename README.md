@@ -1,4 +1,4 @@
-## Intro
+<img src="https://raw.githubusercontent.com/alakajam-team/alakajam-poc/master/static/images/logo-v2.png" />
 
 An early proof of concept for an improved Alakajam! site architecture.
 
