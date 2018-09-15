@@ -45,7 +45,7 @@ The server will restart by itself upon changing the code.
 
 ## Troubleshooting 
 
-* `Debugging fails/shows no output on VSCode`
+* Debugging fails/shows no output on VSCode
 
 Use this as your `.vscode/launch.json`:
 
