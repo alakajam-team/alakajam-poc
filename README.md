@@ -4,7 +4,7 @@ An early proof of concept for an improved Alakajam! site architecture.
 
 ## Initial setup
 
-1. **Install dependencies**: `npm i && npm i -g typescript tslint`
+1. **Install dependencies**: `npm install && npm install -g typescript tslint`
 2. **Build**: `npm build`
 3. **Start**: `npm start`
 
