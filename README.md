@@ -45,6 +45,28 @@ The server will restart by itself upon changing the code.
 
 ## Troubleshooting 
 
+* `Debugging fails/shows no output on VSCode`
+
+Use this as your `.vscode/launch.json`:
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Alakajam!",
+      "program": "${workspaceFolder}\\dist_server\\index.js",
+      "console": "integratedTerminal",
+      "outFiles": [
+        "${workspaceFolder}/dist_server/**/*.js"
+      ]
+    }
+  ]
+}
+```
+
 * `EPERM: operation not permitted, mkdir '...\alakajam-poc\node_modules\@types`
 
 This can happen on Windows on older Node versions. Upgrade Node (not just npm) to fix this.
