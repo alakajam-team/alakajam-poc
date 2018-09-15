@@ -68,33 +68,7 @@ Put this in your `.vscode/launch.json`:
 * `promisify-node` can be replaced with the now native `util.promisify()`
 * Rename `.css` files to `.pcss` for correct code highlighting (in Visual Studio Code in particular)
 
-### Other ideas
-
-* Check [Lost](http://lostgrid.org/docs.html) grid system
-
 ## Troubleshooting 
-
-* **Debugging fails/shows no output on VSCode**
-
-Use this as your `.vscode/launch.json`.
-
-```
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug Alakajam!",
-      "type": "node",
-      "request": "launch",
-      "args": ["${workspaceFolder}\\server\\index.ts"],
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
-      "sourceMaps": true,
-      "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
-    }
-  ]
-}
-```
 
 * **Error on launch**: `EPERM: operation not permitted, mkdir '...\alakajam-poc\node_modules\@types`
 
