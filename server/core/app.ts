@@ -2,8 +2,9 @@ import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import config from "../config";
 import constants from "../constants";
-import * as routes from "../controllers/routes";
+import * as routes from "../controller/routes";
 import environment from "../environment";
+import db from "./db";
 import enums from "./enums";
 import log from "./log";
 import middlewareFilters from "./template-filters";
@@ -14,11 +15,7 @@ import middlewareFilters from "./template-filters";
 export class App {
 
   public async launch(): Promise<void> {
-    await Promise.all([this.initDatabase(), this.startExpress()]);
-  }
-
-  private async initDatabase(): Promise<void> {
-    // TODO
+    await this.startExpress();
   }
 
   private async startExpress(): Promise<void> {
@@ -59,9 +56,9 @@ export class App {
     routes.initRoutes(app);
 
     // Listen to port
-    app.listen(config.serverPort, () => {
+    app.listen(config.SERVER_PORT, () => {
       const launchSeconds = (Date.now() - environment.launchTime) / 1000;
-      log.warn(`Server launched in ${launchSeconds.toFixed(1)}s on port ${config.serverPort}.`);
+      log.warn(`Server launched in ${launchSeconds.toFixed(1)}s on port ${config.SERVER_PORT}.`);
       if (process.send) {
         // browser-refresh event
         process.send("online");

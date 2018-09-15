@@ -2,7 +2,7 @@ import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
 import config from "../config";
 import constants from "../constants";
-import * as routes from "../controllers/routes";
+import * as routes from "../controller/routes";
 import enums from "./enums";
 import templateFilters from "./template-filters";
 

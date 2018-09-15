@@ -1,3 +1,15 @@
-<h1>Hello world</h1>
+<h1>Welcome to {{ name }}</h1>
 
-<p>Server started <b>{{ launchTime | relativeTime }}</b></p>
+<p> Server started <b>{{ launchTime | relativeTime }}</b>
+</p>
+
+<h2>Entries: {{ entries.length }}</h2>
+
+<ul>
+  {% for entry in entries %}
+    <li>
+      <b>{{ entry.title }}</b>
+      {{ (' | ' + entry.description) if entry.description }}
+    </li>
+  {% endfor %}
+</ul>
