@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
+import * as path from "path";
 import config from "../config";
 import constants from "../constants";
 import * as routes from "../controller/routes";
@@ -25,6 +26,9 @@ export class App {
     // Application locals
     app.locals.config = config;
     app.locals.devMode = environment.devMode;
+
+    // Static files
+    app.use("/static", express.static(path.join(constants.PATH_SOURCES_ROOT, "static")));
 
     // Templating engine
     app.set("views", constants.PATH_TEMPLATES);
