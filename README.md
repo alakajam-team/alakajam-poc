@@ -24,6 +24,7 @@ The server will restart by itself upon changing the code.
 - Test relations in entities
 - Test more advanced use cases in services
 - Debugging recommandations (VSCode + TypeScript, TypeScript alone)
+- `ts-node-dev` instead of `brower-refresh`?
 
 ### Big TODOs
 
