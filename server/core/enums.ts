@@ -4,16 +4,16 @@
  * @module core/enums
  */
 
-export default {
+const enums = {
   EVENT: {
     STATUS: {
       PENDING: "pending",
       OPEN: "open",
-      CLOSED: "closed"
+      CLOSED: "closed",
     },
     STATUS_RULES: {
       DISABLED: "disabled",
-      OFF: "off"
+      OFF: "off",
     },
     STATUS_THEME: {
       DISABLED: "disabled",
@@ -21,20 +21,20 @@ export default {
       VOTING: "voting",
       SHORTLIST: "shortlist",
       CLOSED: "closed",
-      RESULTS: "results"
+      RESULTS: "results",
     },
     STATUS_ENTRY: {
       OFF: "off",
       OPEN: "open",
       OPEN_UNRANKED: "open_unranked",
-      CLOSED: "closed"
+      CLOSED: "closed",
     },
     STATUS_RESULTS: {
       DISABLED: "disabled",
       OFF: "off",
       VOTING: "voting",
       VOTING_RESCUE: "voting_rescue",
-      RESULTS: "results"
+      RESULTS: "results",
     },
     STATUS_TOURNAMENT: {
       DISABLED: "disabled",
@@ -42,19 +42,19 @@ export default {
       SUBMISSION: "submission",
       PLAYING: "playing",
       CLOSED: "closed",
-      RESULTS: "results"
-    }
+      RESULTS: "results",
+    },
   },
   ENTRY: {
     STATUS_HIGH_SCORE: {
       OFF: "off",
       NORMAL: "normal",
-      REVERSED: "reversed"
+      REVERSED: "reversed",
     },
     HIGH_SCORE_TYPE: {
       NUMBER: "number",
-      TIME: "time"
-    }
+      TIME: "time",
+    },
   },
   THEME: {
     STATUS: {
@@ -62,13 +62,15 @@ export default {
       ACTIVE: "active",
       BANNED: "banned",
       SHORTLIST: "shortlist",
-      DUPLICATE: "duplicate"
-    }
+      DUPLICATE: "duplicate",
+    },
   },
   DIVISION: {
     SOLO: "solo",
     TEAM: "team",
     RANKED: "ranked",
-    UNRANKED: "unranked"
-  }
+    UNRANKED: "unranked",
+  },
 };
+
+export default enums;

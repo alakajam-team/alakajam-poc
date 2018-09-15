@@ -12,37 +12,77 @@
  */
 
 import * as moment from "moment";
-import * as optionalRequire from "optional-require";
-import * as path from "path";
-import * as util from "util";
 import * as winston from "winston";
+import config from "../config";
 import constants from "../constants";
 
+/**
+ * A logger that uses Winston under the hood,
+ * prepending the output with the log level and location in the code.
+ */
 export class Log {
   public winstonInstance: winston.LoggerInstance;
 
+  /**
+   * Creates a new logger pointing at the console.
+   */
   constructor() {
-    const appConfig = optionalRequire(require)(constants.PATH_APP_CONFIG);
-    const logLevel = appConfig ? appConfig.logLevel : "info";
-    this.init(logLevel);
+    winston.transports.Console.prototype.log = function(level, message, meta, callback) {
+      const output = require("winston/lib/winston/common").log(Object.assign({}, this, { level, message, meta }));
+      console[level in console ? level : "log"](output);
+      setImmediate(callback, null, true);
+    };
+
+    const consoleTransport = new winston.transports.Console({
+      colorize: true,
+      level: config.logLevel,
+      timestamp() {
+        return moment().format("YYYY-MM-DD hh:mm:ss.SSS");
+      },
+    });
+
+    this.winstonInstance = new winston.Logger({
+      transports: [consoleTransport],
+    });
   }
 
+  /**
+   * Logs a debug-level message.
+   * @param args
+   */
   public debug(...args: any[]): void {
     this.log("debug", args);
   }
 
+  /**
+   * Logs an info-level message.
+   * @param args
+   */
   public info(...args: any[]): void {
     this.log("info", args);
   }
 
+  /**
+   * Logs a warn-level message.
+   * @param args
+   */
   public warn(...args: any[]): void {
     this.log("warn", args);
   }
 
+  /**
+   * Logs an error-level message.
+   * @param args
+   */
   public error(...args: any[]): void {
     this.log("error", args);
   }
 
+  /**
+   * Logs a message, letting you pass the level dynamically.
+   * @param level
+   * @param args
+   */
   public log(level: string, args: any[]): void {
     this.winstonInstance.log.apply(this.winstonInstance,
       [level, "\x1b[34m[" + this.getCallingFilename() + "]\x1b[0m", ...args]);
@@ -73,27 +113,6 @@ export class Log {
       }
     }
     return location;
-  }
-
-  private init(logLevel: string) {
-    winston.transports.Console.prototype.log = function (level, message, meta, callback) {
-      const output = require('winston/lib/winston/common').log(Object.assign({}, this, { level: level, message: message, meta: meta }));
-      console[level in console ? level : 'log'](output); 
-      setImmediate(callback, null, true);
-    };
-
-    const consoleTransport = new winston.transports.Console({
-      colorize: true,
-      level: logLevel,
-      timestamp() {
-        return moment().format("YYYY-MM-DD hh:mm:ss.SSS");
-      },
-    });
-
-    this.winstonInstance = new winston.Logger({
-      transports: [consoleTransport],
-    });
-
   }
 }
 

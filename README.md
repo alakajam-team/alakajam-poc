@@ -45,9 +45,9 @@ The server will restart by itself upon changing the code.
 
 ## Troubleshooting 
 
-* Debugging fails/shows no output on VSCode
+* **Debugging fails/shows no output on VSCode**
 
-Use this as your `.vscode/launch.json`:
+Use this as your `.vscode/launch.json`. Note that this does not build the sources and you should probably launch a `tsc: watch` task separately.
 
 ```
 {
@@ -67,6 +67,6 @@ Use this as your `.vscode/launch.json`:
 }
 ```
 
-* `EPERM: operation not permitted, mkdir '...\alakajam-poc\node_modules\@types`
+* **Error on launch**: `EPERM: operation not permitted, mkdir '...\alakajam-poc\node_modules\@types`
 
 This can happen on Windows on older Node versions. Upgrade Node (not just npm) to fix this.

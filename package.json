@@ -6,7 +6,10 @@
   "main": "dist_server/index.js",
   "scripts": {
     "start": "node dist_server/index.js",
-    "lint": "tslint --project . --fix"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint --project . --fix",
+    "docs": "typedoc --out dist_docs"
   },
   "repository": {
     "type": "git",
@@ -23,17 +26,16 @@
     "moment": "^2.22.1",
     "nunjucks": "^3.1.2",
     "optional-require": "^1.0.0",
-    "sqlite3": "^4.0.0",
-    "ts-node": "^7.0.1",
-    "typeorm": "^0.2.5",
-    "typescript": "^3.0.3",
+    "reflect-metadata": "^0.1.12",
+    "sqlite3": "^4.0.2",
+    "typeorm": "^0.2.7",
     "winston": "^2.4.4"
   },
   "optionalDependencies": {},
   "devDependencies": {
     "@types/express": "^4.11.1",
     "@types/express-promise-router": "^2.0.0",
-    "@types/node": "^10.1.0",
+    "@types/node": "^10.9.4",
     "@types/nunjucks": "^3.0.0",
     "@types/winston": "^2.3.9"
   },

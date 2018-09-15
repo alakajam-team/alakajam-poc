@@ -1,22 +1,12 @@
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
-import * as fs from "fs";
-import * as nunjucks from "nunjucks";
-import * as path from "path";
-import * as util from "util";
+import config from "../config";
 import constants from "../constants";
 import * as routes from "../controllers/routes";
-import config from "./config";
 import enums from "./enums";
-import log from "./log";
-import middlewareFilters from "./middleware-filters";
+import templateFilters from "./template-filters";
 
-const LAUNCH_TIME = new Date().getTime();
-
-export function configure(
-  app: express.Express,
-  devMode: boolean
-): Promise<void> {
+export function configure(app: express.Express, devMode: boolean, startTime: number): Promise<void> {
   // Application locals
   app.locals.config = config;
   app.locals.devMode = devMode;
@@ -25,7 +15,7 @@ export function configure(
   app.set("views", constants.PATH_TEMPLATES);
   const templating = expressNunjucks(app, {
     noCache: devMode,
-    watch: devMode
+    watch: devMode,
   });
 
   // Templating globals
@@ -34,16 +24,16 @@ export function configure(
     constants,
     enums,
     devMode,
-    launchTime: LAUNCH_TIME
+    launchTime: startTime,
   };
-  Object.keys(globals).map(key => templating.env.addGlobal(key, globals[key]));
-  templating.env.addGlobal("context", function () {
+  Object.keys(globals).map((key) => templating.env.addGlobal(key, globals[key]));
+  templating.env.addGlobal("context", function() {
     // lets devs display the whole templating context with
     // {{ context() | prettyDump | safe }}
     this.ctx.constants = constants;
     this.ctx.enums = enums;
     this.ctx.devMode = app.locals.devMode;
-    this.ctx.launchTime = LAUNCH_TIME;
+    this.ctx.launchTime = startTime;
     return this.ctx;
   });
   /*
@@ -54,8 +44,8 @@ export function configure(
     */
 
   // Templating filters
-  Object.keys(middlewareFilters).map(key =>
-    templating.env.addFilter(key, middlewareFilters[key])
+  Object.keys(templateFilters).map((key) =>
+    templating.env.addFilter(key, templateFilters[key]),
   );
 
   // Controllers

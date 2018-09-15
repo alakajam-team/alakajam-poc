@@ -1,14 +1,27 @@
-import config from "./core/config";
-import Server from "./core/server";
+const launchTime = Date.now();
 
-const startTime = Date.now();
+import "reflect-metadata";
+import config, { ConfigImpl } from "./config";
+import log from "./core/log";
+import environment, { EnvironmentImpl } from "./environment";
 
-// Environment variables
-if (config.debugTraceRequests) {
-  process.env.DEBUG = "express:*";
-}
-const isDevEnvironment = process.env.NODE_ENV === "development";
+(async () => {
 
-// Server launch
-const server = new Server(isDevEnvironment, startTime);
-server.start();
+  // Override environment variables
+  if (config.debugTraceRequests) {
+    process.env.DEBUG = "express:*";
+  }
+
+  // Initialize config & environment before requiring any other app sources
+  const configImpl = config as ConfigImpl;
+  const configWarnings = await (config as ConfigImpl).loadFromFile("../config.json");
+  configWarnings.map((warning) => log.warn(warning.message));
+  const environmentImpl = environment as EnvironmentImpl;
+  environmentImpl.devMode = process.env.NODE_ENV === "development";
+  environmentImpl.launchTime = launchTime;
+
+  // Launch server
+  const app = require("./core/app").default;
+  app.launch();
+
+})();

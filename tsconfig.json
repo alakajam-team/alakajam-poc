@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
+    "outDir": "dist_server",
+    "types": ["reflect-metadata"],
     "target": "ES2017",
     "module": "commonjs",
-    "outDir": "dist_server",
-    "sourceMap": true
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": [
-    "server/**/*.ts",
-    "server/**/*.d.ts"
+    "server/**/*.*"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }
