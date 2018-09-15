@@ -4,16 +4,16 @@ An early proof of concept for an improved Alakajam! site architecture.
 
 ## Initial setup
 
-* `npm install -g typescript tslint knex`
-* `tsc`
-* `npm run start`
+1. **Install dependencies**: `npm install && npm install -g typescript tslint knex`
+2. **Build**: `tsc`
+3. **Launch**: `npm start`
 
 ## Developer tools
 
 * `npm install -g browser-refresh`
 
-1. On a first console, launch: `tsc --watch`
-2. On a second console, launch: `browser-refresh`
+1. On a first console, launch the compiler: `tsc -w`
+2. On a second console, launch the server: `browser-refresh`
 
 The server will restart by itself upon changing the code.
 

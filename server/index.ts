@@ -5,7 +5,7 @@ const startTime = Date.now();
 
 // Environment variables
 if (config.debugTraceRequests) {
-    process.env.DEBUG = "express:*";
+  process.env.DEBUG = "express:*";
 }
 const isDevEnvironment = process.env.NODE_ENV === "development";
 
