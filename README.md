@@ -4,18 +4,41 @@ An early proof of concept for an improved Alakajam! site architecture.
 
 ## Initial setup
 
-1. **Install dependencies**: `npm install && npm install -g typescript tslint knex`
-2. **Build**: `tsc`
-3. **Launch**: `npm start`
+1. **Install dependencies**: `npm i && npm i -g typescript tslint`
+2. **Build**: `npm build`
+3. **Start**: `npm start`
 
 ## Developer tools
 
-* `npm install -g browser-refresh`
+**Install dependencies**: `npm install -g typescript ts-node-dev tslint typedoc`
 
-1. On a first console, launch the compiler: `tsc -w`
-2. On a second console, launch the server: `browser-refresh`
+* `npm run buildw`: Watches the sources to build them automatically.
+* `npm run startw`: Start the server, manages building/restarting automatically.
+* `npm run lint`: Checks the sources for errors, and fixes them if possible. Launched automatically upon committing.
+* `npm run typedoc`: Generates a static documentation site in `dist_docs/`
+* `npm run debug`: Launches the server in debug mode. Type `about:inspect` in a Chrome browser and it should let you connect to your Node target.
 
-The server will restart by itself upon changing the code.
+## Debugging with Visual Studio Code
+
+Put this in your `.vscode/launch.json`:
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Alakajam!",
+      "type": "node",
+      "request": "launch",
+      "args": ["${workspaceFolder}\\server\\index.ts"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
+    }
+  ]
+}
+```
 
 ## Design notes
 
@@ -23,8 +46,6 @@ The server will restart by itself upon changing the code.
 
 - Test relations in entities
 - Test more advanced use cases in services
-- Debugging recommandations (VSCode + TypeScript, TypeScript alone)
-- `ts-node-dev` instead of `brower-refresh`?
 
 ### Big TODOs
 
@@ -55,21 +76,21 @@ The server will restart by itself upon changing the code.
 
 * **Debugging fails/shows no output on VSCode**
 
-Use this as your `.vscode/launch.json`. Note that this does not build the sources and you should probably launch a `tsc: watch` task separately.
+Use this as your `.vscode/launch.json`.
 
 ```
 {
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Alakajam!",
       "type": "node",
       "request": "launch",
-      "name": "Launch Alakajam!",
-      "program": "${workspaceFolder}\\dist_server\\index.js",
-      "console": "integratedTerminal",
-      "outFiles": [
-        "${workspaceFolder}/dist_server/**/*.js"
-      ]
+      "args": ["${workspaceFolder}\\server\\index.ts"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "sourceMaps": true,
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
     }
   ]
 }
