@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist_server",
-    "types": ["reflect-metadata"],
+    "outDir": "dist/server",
     "target": "ES2017",
     "module": "commonjs",
     "moduleResolution": "node",

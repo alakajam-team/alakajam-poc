@@ -1,4 +1,22 @@
-dist_*/
+# Local files
 node_modules/
-appconfig.json
-.*
+config.js
+
+# Generated output
+dist/
+
+# Data
+data/
+coverage/
+tests/data/
+*.log
+*.out
+*.pid
+
+# OS-specific garbage
+.DS_Store
+*~
+
+# Misc
+/.*
+yarn.lock

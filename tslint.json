@@ -5,8 +5,9 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**",
-      "dist_*/**",
+      "dist/**",
       "data/**",
+      "static/**",
       "templates/**"
     ]
   },

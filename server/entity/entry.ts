@@ -1,3 +1,5 @@
+/* tslint:disable:variable-name */
+
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
