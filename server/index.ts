@@ -16,7 +16,9 @@ import constants from "./constants";
 
   // Initialize app config + DB connection + environment info, before requiring any other app sources
   const configImpl = config as ConfigImpl;
-  const configWarnings = await configImpl.loadFromFile(path.join(constants.PATH_SOURCES_ROOT, "config.js"));
+  const configWarnings = await configImpl.loadFromFile(
+    path.join(constants.PATH_SOURCES_ROOT, "config.js"),
+    { createIfMissing: true });
   await db.connect(configImpl);
 
   const environmentImpl = environment as EnvironmentImpl;

@@ -18,7 +18,7 @@ export interface Config {
 
   readonly SERVER_ROOT_URL: string;
 
-  readonly AUTO_BUILD_JS: boolean;
+  readonly CLIENT_BUILD: "startup"|"watch"|"never";
 
   readonly DB_TYPE: "postgresql"|"sqlite";
 
@@ -41,23 +41,26 @@ export interface Config {
    * Verbose level among 'none', 'error', 'warn', 'info', 'debug'
    */
   readonly LOG_LEVEL: string;
+
+  readonly DEBUG_TRACE_SQL: boolean;
 }
 
 /**
  * General configuration of the application
  */
 export class ConfigImpl implements Config {
-  public readonly SERVER_PORT: number;
-  public readonly SERVER_ROOT_URL: string;
-  public readonly AUTO_BUILD_JS: boolean;
-  public readonly DB_TYPE: "postgresql"|"sqlite";
-  public readonly DB_HOST: string;
-  public readonly DB_USER: string;
-  public readonly DB_PASSWORD: string;
-  public readonly DB_NAME: string;
-  public readonly DB_SQLITE_FILENAME: string;
-  public readonly DEBUG_TRACE_REQUESTS: boolean;
-  public readonly LOG_LEVEL: string;
+  readonly SERVER_PORT: number;
+  readonly SERVER_ROOT_URL: string;
+  readonly CLIENT_BUILD: "startup"|"watch"|"never";
+  readonly DB_TYPE: "postgresql"|"sqlite";
+  readonly DB_HOST: string;
+  readonly DB_USER: string;
+  readonly DB_PASSWORD: string;
+  readonly DB_NAME: string;
+  readonly DB_SQLITE_FILENAME: string;
+  readonly DEBUG_TRACE_REQUESTS: boolean;
+  readonly LOG_LEVEL: string;
+  readonly DEBUG_TRACE_SQL: boolean;
 
   public load(config: ConfigImpl): void {
     Object.keys(config)
@@ -80,7 +83,7 @@ export class ConfigImpl implements Config {
         // Create config file from sample
         const sampleConfigBuffer = await readFilePromise(constants.PATH_APP_CONFIG_SAMPLE);
         await writeFilePromise(configPath, sampleConfigBuffer);
-        warnings.push({ message: `initialized options file with sample values: ${path}` });
+        warnings.push({ message: `initialized options file with sample values: ${configPath}` });
       }
     } else {
       // Fill existing config at runtime with sample in case of missing keys

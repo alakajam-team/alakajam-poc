@@ -5,14 +5,14 @@ An early proof of concept for an improved Alakajam! site architecture.
 ## Initial setup
 
 1. **Install dependencies**: `npm install && npm install -g typescript tslint`
-2. **Build**: `npm build`
+2. **Build the server**: `npm build`
 3. **Start**: `npm start`
 
 ## Developer tools
 
 **Install dependencies**: `npm install -g typescript ts-node-dev tslint typedoc webpack-cli`
 
-* `npm run build:watch`: Watches the sources to build them automatically.
+* `npm run build:watch`: Watches the server sources to build them automatically.
 * `npm run start:watch`: Start the server, manages building/restarting automatically.
 * `npm run lint`: Checks the sources for errors, and fixes them if possible. Launched automatically upon committing.
 * `npm run typedoc`: Generates a static documentation site in `dist/docs/`

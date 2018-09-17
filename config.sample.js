@@ -4,14 +4,10 @@ module.exports = {
   SERVER_ROOT_URL: "http://localhost:8000",
 
   // Builds
-  AUTO_BUILD_JS: true,
+  CLIENT_BUILD: "watch", // never|startup|watch
 
   // Database: SQLite
-  DB_TYPE: 'sqlite3',
-  DB_HOST: 'localhost',
-  DB_USER: 'root',
-  DB_PASSWORD: '',
-  DB_NAME: '',
+  DB_TYPE: 'sqlite',
   DB_SQLITE_FILENAME: 'data/db.sqlite',
 
   // Database: PostgreSQL
@@ -22,5 +18,6 @@ module.exports = {
   DB_NAME: 'alakajam',*/
 
   // Debug: trace options
-  LOG_LEVEL: "debug"
+  LOG_LEVEL: "debug",
+  DEBUG_TRACE_SQL: false, // Traces all SQL calls
 }

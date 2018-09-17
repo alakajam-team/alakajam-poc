@@ -17,10 +17,14 @@ export class DB {
   public async connect(config: Config) {
     // Build options object
     let connectionOptions: ConnectionOptions;
+    const entities = [path.join(__dirname, "../entity/*.*")]
     if (config.DB_TYPE === "sqlite") {
       connectionOptions = {
         type: "sqlite",
         database: config.DB_SQLITE_FILENAME,
+        entities,
+        synchronize: true, // TODO Migrations
+        logging: config.DEBUG_TRACE_SQL
       };
     } else {
       connectionOptions = {
@@ -29,8 +33,9 @@ export class DB {
         username: config.DB_USER,
         password: config.DB_PASSWORD,
         database: config.DB_NAME,
-        entities: [path.join(__dirname, "../entity/*.*")],
+        entities,
         synchronize: true, // TODO Migrations
+        logging: config.DEBUG_TRACE_SQL
       };
     }
 

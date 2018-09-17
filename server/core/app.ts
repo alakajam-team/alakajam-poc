@@ -21,9 +21,7 @@ const fsAccessPromise = util.promisify(fs.access);
 export class App {
 
   public async launch(): Promise<void> {
-    if (config.AUTO_BUILD_JS) {
-      await this.buildJs();
-    }
+    await this.buildClient();
     await this.startExpress();
   }
 
@@ -77,12 +75,18 @@ export class App {
     return;
   }
 
-  private async buildJs(watch: boolean = false): Promise<void> {
-    const config = require(path.join(constants.PATH_SOURCES_ROOT, 'webpack.' + environment.name))
+  private async buildClient(): Promise<void> {
+    if (config.CLIENT_BUILD === "never") {
+      log.warn("Client build disabled. If you change something in 'client/', you'll have to build the sources manually. "
+       + "Example: webpack-cli --config webpack.production.js")
+       return
+    }
+
+    const webpackConfig = require(path.join(constants.PATH_SOURCES_ROOT, 'webpack.' + environment.name))
   
-    await this.createFolderIfMissing(path.join(constants.PATH_SOURCES_ROOT, config.output.path))
+    await this.createFolderIfMissing(path.join(constants.PATH_SOURCES_ROOT, webpackConfig.output.path))
   
-    const compiler = webpack(config)
+    const compiler = webpack(webpackConfig)
   
     await new Promise(function (resolve, reject) {
       function callback (err, stats) {
@@ -104,16 +108,16 @@ export class App {
         } else if (stats.hasWarnings()) {
           logMethod = log.warn.bind(log)
         }
-        logMethod(stats.toString(config.stats))
+        logMethod(stats.toString(webpackConfig.stats))
   
         resolve()
       }
   
-      if (watch) {
-        log.info('Setting up automatic JS build...')
-        compiler.watch(config.watchOptions || {}, callback)
+      if (config.CLIENT_BUILD === "watch") {
+        log.info('Setting up automatic client build...')
+        compiler.watch(webpackConfig.watchOptions || {}, callback)
       } else {
-        log.info('Building JS...')
+        log.info('Building client sources...')
         compiler.run(callback)
       }
     })

@@ -38,7 +38,7 @@ export class Post {
   @Column({ default: 0 })
   public like_count: number;
 
-  @Column({ type: "varchar", length: 500, default: [] }) // TODO Migrate to simple-json
+  @Column({ type: "varchar", length: 500, default: "[]" }) // TODO Migrate to simple-json
   public like_details: { [name: string]: number };
 
   @Column(ColumnTypesUtils.dateTime({ nullable: true }))

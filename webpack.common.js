@@ -25,11 +25,11 @@ const babelOptions = {
 
 module.exports = {
   entry: {
-    index: './client/scripts/index.ts'
+    index: './client/scripts/index.ts',
+    styles: './client/styles/styles.js'
   },
   output: {
     path: rootPathTo('dist/client/scripts'),
-    filename: '[name].js',
     publicPath: '/dist/client/'
   },
   resolve: {
@@ -52,6 +52,14 @@ module.exports = {
             loader: 'babel-loader',
             options: babelOptions
           }
+        ]
+      },
+      {
+        test: /\.p?css$/,
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader'
         ]
       },
       // Remove the massive Unicode table pulled in by the `slug` package.
