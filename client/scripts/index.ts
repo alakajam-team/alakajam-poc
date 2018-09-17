@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-expressions */
-
 import Vue from "vue";
 
 new Vue({
@@ -9,3 +7,4 @@ new Vue({
     siteName: "Alakajam!",
   },
 });
+
