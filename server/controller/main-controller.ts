@@ -17,3 +17,7 @@ export async function index(req: Request, res: Response, next: NextFunction) {
     entries,
   });
 }
+
+export async function notFound(req: Request, res: Response, next: NextFunction) {
+  res.render("404");
+}

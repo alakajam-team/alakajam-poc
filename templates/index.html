@@ -1,17 +1,27 @@
-<h1>Welcome to {{ name }}</h1>
+<!doctype html>
+<html>
+<head>
 
-<p> Server started <b>{{ launchTime | relativeTime }}</b>
-</p>
+</head>
+<body>
+  <h1>Welcome to {{ name }}</h1>
 
-<h2>Entries: {{ entries.length }}</h2>
+  <p> Server started <b>{{ launchTime | relativeTime }}</b>
+  </p>
 
-<ul>
-  {% for entry in entries %}
-    <li>
-      <b>{{ entry.title }}</b>
-      {{ (' | ' + entry.description) if entry.description }}
-    </li>
-  {% endfor %}
-</ul>
+  <h2>Entries: {{ entries.length }}</h2>
 
-<img src="static/images/logo-v2.png" />
+  <ul>
+    {% for entry in entries %}
+      <li>
+        <b>{{ entry.title }}</b>
+        {{ (' | ' + entry.description) if entry.description }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <img src="static/images/logo-v2.png" />
+
+  <script src="static/js/index.js"></script>
+</body>
+</html>

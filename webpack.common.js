@@ -1,8 +1,8 @@
 const path = require('path')
+const { CheckerPlugin } = require('awesome-typescript-loader')
+const nodeExternals = require('webpack-node-externals');
 
 const rootPathTo = pathFromRoot => path.resolve(__dirname, pathFromRoot)
-
-const outputPath = rootPathTo('dist_client')
 
 const babelOptions = {
   presets: [
@@ -26,15 +26,25 @@ const babelOptions = {
 
 module.exports = {
   entry: {
-    index: './client/index.js'
+    index: './client/js/index.js'
   },
   output: {
-    path: outputPath,
+    path: rootPathTo('dist/client/js'),
     filename: '[name].js',
     publicPath: '/dist/client/'
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        include: rootPathTo('./client/js'),
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions
+          }
+        ]
+      },
       // Remove the massive Unicode table pulled in by the `slug` package.
       // https://www.npmjs.com/package/slug
       // https://stackoverflow.com/questions/41873334/webpack-browserify-ignore-equivalent

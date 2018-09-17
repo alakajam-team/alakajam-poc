@@ -3,6 +3,9 @@ module.exports = {
   SERVER_PORT: 8000,
   SERVER_ROOT_URL: "http://localhost:8000",
 
+  // Builds
+  AUTO_BUILD_JS: false,
+
   // Database: SQLite
   /*DB_TYPE: 'sqlite3',
   DB_HOST: 'localhost',

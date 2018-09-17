@@ -5,6 +5,7 @@ import "reflect-metadata";
 import config, { ConfigImpl } from "./config";
 import db from "./core/db";
 import environment, { EnvironmentImpl } from "./environment";
+import constants from "./constants";
 
 (async () => {
 
@@ -15,11 +16,11 @@ import environment, { EnvironmentImpl } from "./environment";
 
   // Initialize app config + DB connection + environment info, before requiring any other app sources
   const configImpl = config as ConfigImpl;
-  const configWarnings = await configImpl.loadFromFile(path.join(__dirname, "../config.js"));
+  const configWarnings = await configImpl.loadFromFile(path.join(constants.PATH_SOURCES_ROOT, "config.js"));
   await db.connect(configImpl);
 
   const environmentImpl = environment as EnvironmentImpl;
-  environmentImpl.devMode = process.env.NODE_ENV === "development";
+  environmentImpl.name = (process.env.NODE_ENV === "development") ? "development" : "production";
   environmentImpl.launchTime = launchTime;
 
   // Launch server

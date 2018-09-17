@@ -18,6 +18,8 @@ export interface Config {
 
   readonly SERVER_ROOT_URL: string;
 
+  readonly AUTO_BUILD_JS: boolean;
+
   readonly DB_TYPE: "postgresql"|"sqlite";
 
   readonly DB_HOST: string;
@@ -47,6 +49,7 @@ export interface Config {
 export class ConfigImpl implements Config {
   public readonly SERVER_PORT: number;
   public readonly SERVER_ROOT_URL: string;
+  public readonly AUTO_BUILD_JS: boolean;
   public readonly DB_TYPE: "postgresql"|"sqlite";
   public readonly DB_HOST: string;
   public readonly DB_USER: string;
