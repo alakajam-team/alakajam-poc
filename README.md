@@ -45,7 +45,6 @@ Put this in your `.vscode/launch.json`:
 
 ### Little TODOs
 
-- Test relations in entities
 - Test more advanced use cases in services
 
 ### Big TODOs
@@ -62,7 +61,6 @@ Put this in your `.vscode/launch.json`:
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
-- [ ] Consider Vue.js for client-side JS
 
 ### Code upgrade
 

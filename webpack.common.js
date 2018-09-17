@@ -1,6 +1,5 @@
 const path = require('path')
 const { CheckerPlugin } = require('awesome-typescript-loader')
-const nodeExternals = require('webpack-node-externals');
 
 const rootPathTo = pathFromRoot => path.resolve(__dirname, pathFromRoot)
 
@@ -26,18 +25,28 @@ const babelOptions = {
 
 module.exports = {
   entry: {
-    index: './client/js/index.js'
+    index: './client/scripts/index.ts'
   },
   output: {
-    path: rootPathTo('dist/client/js'),
+    path: rootPathTo('dist/client/scripts'),
     filename: '[name].js',
     publicPath: '/dist/client/'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader'
+      },
+      {
         test: /\.js$/,
-        include: rootPathTo('./client/js'),
+        include: rootPathTo('client/scripts'),
         use: [
           {
             loader: 'babel-loader',
@@ -56,6 +65,9 @@ module.exports = {
   },
   context: __dirname,
   target: 'web',
+  plugins: [
+      new CheckerPlugin()
+  ],
   // https://webpack.js.org/configuration/stats/
   stats: {
     chunks: false,

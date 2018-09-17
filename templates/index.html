@@ -1,27 +1,33 @@
 <!doctype html>
 <html>
 <head>
-
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
 </head>
 <body>
-  <h1>Welcome to {{ name }}</h1>
+  <div id="app">
+    <h1>Welcome to <span v-cloak>${siteName}</span></h1>
+    
+    <p>Server started <b>{{ launchTime | relativeTime }}</b></p>
+    
+    <h2>Site name: <input v-model="siteName" /></h2>
 
-  <p> Server started <b>{{ launchTime | relativeTime }}</b>
-  </p>
+    <h2>Entries: {{ entries.length }}</h2>
 
-  <h2>Entries: {{ entries.length }}</h2>
+    <ul>
+      {% for entry in entries %}
+        <li>
+          <b>{{ entry.title }}</b>
+          {{ (' | ' + entry.description) if entry.description }}
+        </li>
+      {% endfor %}
+    </ul>
 
-  <ul>
-    {% for entry in entries %}
-      <li>
-        <b>{{ entry.title }}</b>
-        {{ (' | ' + entry.description) if entry.description }}
-      </li>
-    {% endfor %}
-  </ul>
-
-  <img src="static/images/logo-v2.png" />
-
-  <script src="static/js/index.js"></script>
+    <img src="static/images/logo-v2.png" />
+  </div>
+  <script src="static/scripts/index.js"></script>
 </body>
 </html>
