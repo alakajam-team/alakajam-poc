@@ -46,6 +46,7 @@ Put this in your `.vscode/launch.json`:
 ### Little TODOs
 
 - Test more advanced use cases in services
+- Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
 
 ### Big TODOs
 
@@ -54,8 +55,8 @@ Put this in your `.vscode/launch.json`:
 - [ ] **[WIP!]** Better organization of service layers 
 - [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
 - [ ] Database migrations (switch to TypeORM?)
-- [ ] Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
-- [ ] Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
+- [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
+- [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
 - [ ] Easier testing, better test coverage
 - [ ] Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)

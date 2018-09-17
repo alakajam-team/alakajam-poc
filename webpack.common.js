@@ -42,16 +42,9 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader'
-      },
-      {
-        test: /\.js$/,
-        include: rootPathTo('client/scripts'),
         use: [
-          {
-            loader: 'babel-loader',
-            options: babelOptions
-          }
+          'awesome-typescript-loader',
+          { loader: 'babel-loader', options: babelOptions }
         ]
       },
       {
