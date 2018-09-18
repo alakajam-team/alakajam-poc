@@ -20,9 +20,8 @@ export async function index(req: Request, res: Response, next: NextFunction) {
 
 export async function deleteEntries(req: Request, res: Response, next: NextFunction) {
   await entryService.deleteAll();
-  res.redirect('/');
+  res.redirect("/");
 }
-
 
 export async function notFound(req: Request, res: Response, next: NextFunction) {
   res.render("404");

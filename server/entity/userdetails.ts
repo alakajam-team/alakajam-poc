@@ -1,6 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
-import { User } from "./user";
+/* tslint:disable:variable-name */
+
+import {Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
+import { User } from "./user";
 
 /**
  * Extended user information, mostly containing the user profile page.
@@ -17,7 +19,7 @@ export class UserDetails {
   @OneToOne((type) => User, (user) => user.details, { nullable: false })
   @JoinColumn({ name: "user_id" })
   public user: User;
-  
+
   @Column(ColumnTypesUtils.varchar({ length: 100000 }))
   public body: string;
 

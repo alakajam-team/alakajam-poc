@@ -1,10 +1,10 @@
-import * as fs from "fs";
-import * as path from "path";
-import * as util from "util";
 import * as express from "express";
 import * as expressNunjucks from "express-nunjucks";
-import * as webpack from "webpack";
+import * as fs from "fs";
 import * as mkdirp from "mkdirp";
+import * as path from "path";
+import * as util from "util";
+import * as webpack from "webpack";
 import config from "../config";
 import constants from "../constants";
 import * as routes from "../controller/routes";
@@ -69,7 +69,8 @@ export class App {
     // Listen to port
     app.listen(config.serverPort, () => {
       const launchSeconds = (Date.now() - environment.launchTime) / 1000;
-      log.warn(`Server launched in ${environment.name} mode on port ${config.serverPort} (took ${launchSeconds.toFixed(1)}s).`);
+      log.warn(`Server launched in ${environment.name} mode on port `
+        + `${config.serverPort} (took ${launchSeconds.toFixed(1)}s).`);
       if (process.send) {
         // browser-refresh event
         process.send("online");
@@ -81,63 +82,63 @@ export class App {
 
   private async buildClient(): Promise<void> {
     if (config.clientBuild === "never") {
-      log.info("client build disabled. If you change something in 'client/', you'll have to build the sources manually. "
-       + "Example: webpack-cli --config webpack.production.js")
-       return
+      log.info("client build disabled. If you change something in 'client/', you'll have to build the sources manually."
+       + " Example: webpack-cli --config webpack.production.js");
+      return;
     }
 
-    const webpackConfig = require(path.join(constants.PATH_SOURCES_ROOT, 'webpack.' + environment.name))
-  
-    await this.createFolderIfMissing(path.join(constants.PATH_SOURCES_ROOT, webpackConfig.output.path))
-  
-    const compiler = webpack(webpackConfig)
-  
-    await new Promise(function (resolve, reject) {
-      function callback (err, stats) {
+    const webpackConfig = require(path.join(constants.PATH_SOURCES_ROOT, "webpack." + environment.name));
+
+    await this.createFolderIfMissing(path.join(constants.PATH_SOURCES_ROOT, webpackConfig.output.path));
+
+    const compiler = webpack(webpackConfig);
+
+    await new Promise((resolve, reject) => {
+      function callback(err, stats) {
         // https://webpack.js.org/api/node/#error-handling
-  
+
         if (err) {
           // This means an error in webpack or its configuration, not an error in
           // the compiled sources.
-          log.error(err.stack || err)
+          log.error(err.stack || err);
           if (err.details) {
-            log.error(err.details)
+            log.error(err.details);
           }
-          return
+          return;
         }
-  
-        let logMethod = log.info.bind(log)
+
+        let logMethod = log.info.bind(log);
         if (stats.hasErrors()) {
-          logMethod = log.error.bind(log)
+          logMethod = log.error.bind(log);
         } else if (stats.hasWarnings()) {
-          logMethod = log.warn.bind(log)
+          logMethod = log.warn.bind(log);
         }
-        logMethod(stats.toString(webpackConfig.stats))
-  
-        resolve()
+        logMethod(stats.toString(webpackConfig.stats));
+
+        resolve();
       }
-  
+
       if (config.clientBuild === "watch") {
-        log.info('Setting up automatic client build...')
-        compiler.watch(webpackConfig.watchOptions || {}, callback)
+        log.info("Setting up automatic client build...");
+        compiler.watch(webpackConfig.watchOptions || {}, callback);
       } else {
-        log.info('Building client sources...')
-        compiler.run(callback)
+        log.info("Building client sources...");
+        compiler.run(callback);
       }
-    })
+    });
   }
 
   /**
    * Creates a folder. No-op if the folder exists.
    */
-  private async createFolderIfMissing (folderPath) {
+  private async createFolderIfMissing(folderPath) {
     try {
-      await fsAccessPromise(folderPath, fs.constants.R_OK)
+      await fsAccessPromise(folderPath, fs.constants.R_OK);
     } catch (e) {
-      await mkdirp(folderPath)
+      await mkdirp(folderPath);
     }
   }
-  
+
 }
 
 export default new App();

@@ -1,7 +1,6 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn, OneToOne, JoinColumn } from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Post } from "./post";
 import { Timestamped } from "./timestamped";
 import { UserDetails } from "./userdetails";

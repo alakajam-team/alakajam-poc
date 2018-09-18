@@ -10,7 +10,7 @@ export class EnvironmentImpl {
 
   public get devMode(): boolean {
     return this.name === "development";
-  };
+  }
 }
 
 export default new EnvironmentImpl() as Environment;

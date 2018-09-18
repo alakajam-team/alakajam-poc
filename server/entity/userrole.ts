@@ -1,5 +1,7 @@
+/* tslint:disable:variable-name */
+
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { NodeType, ColumnTypesUtils } from "./entity-utils";
+import { ColumnTypesUtils, NodeType } from "./entity-utils";
 import { Timestamped } from "./timestamped";
 
 export type Permission = "read" | "write" | "manage";

@@ -3,9 +3,9 @@ const launchTime = Date.now();
 import * as path from "path";
 import "reflect-metadata";
 import config, { ConfigService } from "./config";
+import constants from "./constants";
 import db from "./core/db";
 import environment, { EnvironmentImpl } from "./environment";
-import constants from "./constants";
 
 (async () => {
 
@@ -17,7 +17,7 @@ import constants from "./constants";
   if (process.argv.includes("patch-ormconfig-ts-node")) {
     await ConfigService.load({
       entities: [ "server/entity/*.*" ],
-      migrations: [ "server/migration/*.*" ]
+      migrations: [ "server/migration/*.*" ],
     });
     patchedOrmConfigTsNode = true;
   }
@@ -32,7 +32,7 @@ import constants from "./constants";
 
   // We can now start require()-ing our sources
   // If we did earlier, they would have used uninitialized versions of the config/DB/environment.
-  
+
   // Initialization output
   const log = require("./core/log").default;
   configWarnings.map((warning) => log.warn(warning.message));

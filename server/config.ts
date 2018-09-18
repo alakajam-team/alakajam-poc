@@ -5,12 +5,12 @@
  */
 
 import * as fs from "fs";
+import { ConfigureOptions } from "nunjucks";
 import * as optionalRequire from "optional-require";
 import * as path from "path";
+import { ConnectionOptions } from "typeorm";
 import * as util from "util";
 import constants from "./constants";
-import { ConnectionOptions } from "typeorm";
-import { ConfigureOptions } from "nunjucks";
 
 const readFilePromise = util.promisify(fs.readFile);
 const writeFilePromise = util.promisify(fs.writeFile);
@@ -18,7 +18,7 @@ const writeFilePromise = util.promisify(fs.writeFile);
 export declare type Config = ConnectionOptions & {
 
   readonly serverPort: string;
-  
+
   readonly serverRootUrl: string;
 
   readonly clientBuild: "startup"|"watch"|"never";
@@ -40,10 +40,10 @@ export declare type Config = ConnectionOptions & {
  */
 export class ConfigService {
   public static instance = {};
-  
+
   public static load(reference: Partial<Config>): void {
     Object.keys(reference)
-      .forEach(key => ConfigService.instance[key] = reference[key]);
+      .forEach((key) => ConfigService.instance[key] = reference[key]);
   }
 
   public static async loadFromFile(configPath: string, options: ConfigOptions = {}): Promise<ConfigWarning[]> {

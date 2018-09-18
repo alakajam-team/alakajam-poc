@@ -1,6 +1,6 @@
 /* tslint:disable:variable-name */
 
-import { PrimaryGeneratedColumn, Column } from "typeorm";
+import { Column, PrimaryGeneratedColumn } from "typeorm";
 import { Timestamped } from "./timestamped";
 
 /**

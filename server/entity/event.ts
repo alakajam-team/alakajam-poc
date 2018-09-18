@@ -28,10 +28,10 @@ export class Event extends Timestamped {
 
   @Column(ColumnTypesUtils.varchar())
   public display_theme: string;
-  
+
   @Column(ColumnTypesUtils.varchar())
   public logo: string;
-  
+
   @Column(ColumnTypesUtils.varchar())
   public status: EventStatus;
 
@@ -49,12 +49,12 @@ export class Event extends Timestamped {
 
   @Column(ColumnTypesUtils.varchar())
   public status_tournament: EventStatusTournament;
-  
+
   @Column(ColumnTypesUtils.varchar())
   public countdown_config: {date?: Date, phrase?: string, enabled?: boolean};
 
   @Column(ColumnTypesUtils.varchar())
-  public divisions: {[key: string]: string}
+  public divisions: {[key: string]: string};
 
   @Column({ default: 0 })
   public entry_count: number;

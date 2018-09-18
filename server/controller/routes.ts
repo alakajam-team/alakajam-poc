@@ -1,8 +1,8 @@
-import * as path from "path";
 import * as express from "express";
 import expressRouter from "express-promise-router";
-import * as mainController from "./main-controller";
+import * as path from "path";
 import constants from "../constants";
+import * as mainController from "./main-controller";
 
 export function initRoutes(app: express.Express): void {
     const router = expressRouter();

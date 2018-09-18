@@ -19,7 +19,7 @@ A proof of concept for an improved Alakajam! site architecture. The goal is to e
 * `npm run debug`: Launches the server in debug mode. Type `about:inspect` in a Chrome browser and it should let you connect to your Node target.
 * `npm run migration:run`: Migrates the DB to the latest version.
 * `npm run migration:revert`: Reverts the latest DB migration.
-* `webpack-cli --config webpack.production.js`: Build the client-side JS/CSS manually.
+* `webpack-cli --config webpack.development.js`: Build the client-side JS/CSS manually.
 
 ## Debugging with Visual Studio Code
 

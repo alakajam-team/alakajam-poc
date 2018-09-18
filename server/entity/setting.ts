@@ -1,8 +1,8 @@
 /* tslint:disable:variable-name */
 
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { Timestamped } from "./timestamped";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
+import { Timestamped } from "./timestamped";
 
 /**
  * Site-wide setting.
@@ -18,4 +18,3 @@ export class Setting extends Timestamped {
   public value: string;
 
 }
-
