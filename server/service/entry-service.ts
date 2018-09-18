@@ -1,4 +1,4 @@
-import { DeepPartial, getRepository, Repository } from "typeorm";
+import { DeepPartial, getRepository, getConnection, Repository, EntityManager, Transaction, TransactionManager } from "typeorm";
 import { Entry } from "../entity/entry";
 
 export class EntryService {
@@ -12,9 +12,11 @@ export class EntryService {
     return this.repository.find();
   }
 
-  public async create(properties: DeepPartial<Entry>) {
-    const entry = this.repository.create(properties);
-    await this.repository.save(entry);
+  @Transaction()
+  public create(properties: DeepPartial<Entry>, @TransactionManager() manager?: EntityManager): Promise<Entry> {
+    const entryRepository = manager.getRepository(Entry);
+    const entry = entryRepository.create(properties);
+    return entryRepository.save(entry);
   }
 
 }

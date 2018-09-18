@@ -1,9 +1,10 @@
 /* tslint:disable:variable-name */
 
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Timestamped } from "./timestamped";
 
 @Entity()
-export class Entry {
+export class Entry extends Timestamped {
 
   @PrimaryGeneratedColumn()
   public id: number;

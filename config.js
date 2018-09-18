@@ -1,23 +1,34 @@
 module.exports = {
   // Web server
-  SERVER_PORT: 8000,
-  SERVER_ROOT_URL: "http://localhost:8000",
+  serverPort: 8000,
+  serverRootUrl: "http://localhost:8000",
 
   // Builds
-  CLIENT_BUILD: "never", // never|startup|watch
-
-  // Database: SQLite
-  DB_TYPE: 'sqlite',
-  DB_SQLITE_FILENAME: 'data/db.sqlite',
-
-  // Database: PostgreSQL
-  /*DB_TYPE: 'postgresql',
-  DB_HOST: 'localhost',
-  DB_USER: 'postgres',
-  DB_PASSWORD: 'postgres',
-  DB_NAME: 'alakajam',*/
+  clientBuild: "never", // never|startup|watch
 
   // Debug: trace options
-  LOG_LEVEL: "debug",
-  DEBUG_TRACE_SQL: false, // Traces all SQL calls
+  logLevel: "debug",
+  debugTraceRequests: false, // Traces all HTTP requests
+
+  // TypeORM: Database config
+  // - SQLite
+  /*type: "sqlite",
+  database: "data/db.sqlite",*/
+  // - PostgreSQL
+  type: "postgres",
+  host: "localhost",
+  username: "postgres",
+  password: "postgres",
+  database: "alakajam_v2",
+
+  // TypeORM: File layout, migrations
+  logging: false, // Traces all SQL calls
+  entities: [ "dist/server/entity/*.*" ],
+  migrations: [ "dist/server/migration/*.*" ],
+  synchronize: false,
+  migrationsTableName: "migration",
+  migrationsRun: true,
+  cli: {
+    migrationsDir: "server/migration"
+  }
 }

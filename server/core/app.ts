@@ -26,10 +26,14 @@ export class App {
   }
 
   private async startExpress(): Promise<void> {
+    // Environment variables
+    if (config.debugTraceRequests) {
+      process.env.DEBUG = "express:*";
+    }
+
+    // App init
     const app = express();
     app.disable("x-powered-by");
-
-    // Application locals
     app.locals.config = config;
     app.locals.devMode = environment.devMode;
 
@@ -63,9 +67,9 @@ export class App {
     routes.initRoutes(app);
 
     // Listen to port
-    app.listen(config.SERVER_PORT, () => {
+    app.listen(config.serverPort, () => {
       const launchSeconds = (Date.now() - environment.launchTime) / 1000;
-      log.warn(`Server launched in ${launchSeconds.toFixed(1)}s on port ${config.SERVER_PORT}.`);
+      log.warn(`Server launched in ${launchSeconds.toFixed(1)}s on port ${config.serverPort}.`);
       if (process.send) {
         // browser-refresh event
         process.send("online");
@@ -76,8 +80,8 @@ export class App {
   }
 
   private async buildClient(): Promise<void> {
-    if (config.CLIENT_BUILD === "never") {
-      log.warn("Client build disabled. If you change something in 'client/', you'll have to build the sources manually. "
+    if (config.clientBuild === "never") {
+      log.info("client build disabled. If you change something in 'client/', you'll have to build the sources manually. "
        + "Example: webpack-cli --config webpack.production.js")
        return
     }
@@ -113,7 +117,7 @@ export class App {
         resolve()
       }
   
-      if (config.CLIENT_BUILD === "watch") {
+      if (config.clientBuild === "watch") {
         log.info('Setting up automatic client build...')
         compiler.watch(webpackConfig.watchOptions || {}, callback)
       } else {

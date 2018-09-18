@@ -4,7 +4,7 @@ import config from "../config";
 const types = {
   dateTime: "date",
 };
-if (config.DB_TYPE === "postgresql") {
+if (config.type === "postgres") {
   types.dateTime = "timestamp with time zone";
 }
 

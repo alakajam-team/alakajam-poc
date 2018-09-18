@@ -1,11 +1,12 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
 import { Post } from "./post";
+import { Timestamped } from "./timestamped";
 
 @Entity()
-export class User {
+export class User extends Timestamped {
 
   @PrimaryGeneratedColumn()
   public id: number;
@@ -39,12 +40,6 @@ export class User {
 
   @Column({ nullable: true })
   public notifications_last_read: Date;
-
-  @Column(ColumnTypesUtils.dateTime())
-  public created_at: Date;
-
-  @Column(ColumnTypesUtils.dateTime())
-  public modified_at: Date;
 
   @OneToMany((type) => Post, (post) => post.user)
   public posts: Post[];

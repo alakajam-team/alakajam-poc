@@ -35,7 +35,7 @@ export class Log {
 
     const consoleTransport = new winston.transports.Console({
       colorize: true,
-      level: config.LOG_LEVEL,
+      level: config.logLevel,
       timestamp() {
         return moment().format("YYYY-MM-DD hh:mm:ss.SSS");
       },

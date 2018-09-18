@@ -8,7 +8,8 @@
     "build": "tsc",
     "build:watch": "tsc -w",
     "start": "node dist/server/index.js",
-    "start:watch": "ts-node-dev server/index.ts",
+    "start:watch": "ts-node-dev server/index.ts patch-ormconfig-ts-node",
+    "migrate": "tsc && typeorm migration:run --config config",
     "debug": "node --inspect --require ts-node/register server/index.ts",
     "lint": "tslint --project tsconfig.json --fix",
     "docs": "typedoc --out dist/docs"

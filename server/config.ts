@@ -9,65 +9,44 @@ import * as optionalRequire from "optional-require";
 import * as path from "path";
 import * as util from "util";
 import constants from "./constants";
+import { ConnectionOptions } from "typeorm";
+import { ConfigureOptions } from "nunjucks";
 
 const readFilePromise = util.promisify(fs.readFile);
 const writeFilePromise = util.promisify(fs.writeFile);
 
-export interface Config {
-  readonly SERVER_PORT: number;
+export declare type Config = ConnectionOptions & {
 
-  readonly SERVER_ROOT_URL: string;
+  readonly serverPort: string;
+  
+  readonly serverRootUrl: string;
 
-  readonly CLIENT_BUILD: "startup"|"watch"|"never";
-
-  readonly DB_TYPE: "postgresql"|"sqlite";
-
-  readonly DB_HOST: string;
-
-  readonly DB_USER: string;
-
-  readonly DB_PASSWORD: string;
-
-  readonly DB_NAME: string;
-
-  readonly DB_SQLITE_FILENAME: string;
-
-  /**
-   * Enables Express debug mode to trace request routes & timing
-   */
-  readonly DEBUG_TRACE_REQUESTS: boolean;
+  readonly clientBuild: "startup"|"watch"|"never";
 
   /**
    * Verbose level among 'none', 'error', 'warn', 'info', 'debug'
    */
-  readonly LOG_LEVEL: string;
+  readonly logLevel: string;
 
-  readonly DEBUG_TRACE_SQL: boolean;
-}
+  /**
+   * Enables Express debug mode to trace request routes & timing
+   */
+  readonly debugTraceRequests: boolean;
+
+};
 
 /**
  * General configuration of the application
  */
-export class ConfigImpl implements Config {
-  readonly SERVER_PORT: number;
-  readonly SERVER_ROOT_URL: string;
-  readonly CLIENT_BUILD: "startup"|"watch"|"never";
-  readonly DB_TYPE: "postgresql"|"sqlite";
-  readonly DB_HOST: string;
-  readonly DB_USER: string;
-  readonly DB_PASSWORD: string;
-  readonly DB_NAME: string;
-  readonly DB_SQLITE_FILENAME: string;
-  readonly DEBUG_TRACE_REQUESTS: boolean;
-  readonly LOG_LEVEL: string;
-  readonly DEBUG_TRACE_SQL: boolean;
-
-  public load(config: ConfigImpl): void {
-    Object.keys(config)
-      .forEach((key) => this[key] = config[key]);
+export class ConfigService {
+  public static instance = {};
+  
+  public static load(reference: Partial<Config>): void {
+    Object.keys(reference)
+      .forEach(key => ConfigService.instance[key] = reference[key]);
   }
 
-  public async loadFromFile(configPath: string, options: ConfigOptions = {}): Promise<ConfigWarning[]> {
+  public static async loadFromFile(configPath: string, options: ConfigOptions = {}): Promise<ConfigWarning[]> {
     if (!path.isAbsolute(configPath)) {
       throw new Error("Config file path must be absolute");
     }
@@ -111,4 +90,4 @@ export interface ConfigWarning {
   message: string;
 }
 
-export default new ConfigImpl() as Config;
+export default ConfigService.instance as Config;

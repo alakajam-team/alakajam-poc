@@ -1,9 +1,10 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
 import { Entry } from "./entry";
 import { User } from "./user";
+import { Timestamped } from "./timestamped";
 
 /**
  * TODO Differences with current tables:
@@ -11,7 +12,7 @@ import { User } from "./user";
  * - Differing constraint names, is it ok?
  */
 @Entity()
-export class Post {
+export class Post extends Timestamped {
 
   @PrimaryGeneratedColumn()
   public id: number;
@@ -40,12 +41,6 @@ export class Post {
 
   @Column({ type: "varchar", length: 500, default: "[]" }) // TODO Migrate to simple-json
   public like_details: { [name: string]: number };
-
-  @Column(ColumnTypesUtils.dateTime({ nullable: true }))
-  public created_at: Date;
-
-  @Column(ColumnTypesUtils.dateTime({ nullable: true }))
-  public modified_at: Date;
 
   @ManyToOne((type) => User, (user) => user.posts, { nullable: false })
   @JoinColumn({ name: "author_user_id" })
