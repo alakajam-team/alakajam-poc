@@ -10,13 +10,15 @@ An early proof of concept for an improved Alakajam! site architecture.
 
 ## Developer tools
 
-**Install dependencies**: `npm install -g typescript ts-node-dev tslint typedoc webpack-cli`
+**Install dependencies**: `npm install -g typescript ts-node-dev tslint typedoc webpack-cli typeorm`
 
 * `npm run build:watch`: Watches the server sources to build them automatically.
 * `npm run start:watch`: Starts the server, manages building/restarting automatically.
-* `npm run lint`: Checks the sources for errors, and fixes them if possible. ~~Launched automatically upon committing.~~ *(Disabled due to issues on Win)*
+* `npm run lint`: Checks the sources for errors, and fixes them if possible. ~~Launched automatically upon committing.~~ *(Disabled for now due to issues on Windows)*
 * `npm run typedoc`: Generates a static documentation site in `dist/docs/`
 * `npm run debug`: Launches the server in debug mode. Type `about:inspect` in a Chrome browser and it should let you connect to your Node target.
+* `npm run migration:run`: Migrates the DB to the latest version.
+* `npm run migration:revert`: Reverts the latest DB migration.
 * `webpack-cli --config webpack.production.js`: Build the client-side JS/CSS manually.
 
 ## Debugging with Visual Studio Code
