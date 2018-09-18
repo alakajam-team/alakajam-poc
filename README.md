@@ -48,6 +48,7 @@ Put this in your `.vscode/launch.json`:
 ### Little TODOs
 
 - Figure out morph relations with TypeORM
+- Try to use the Vue tree viewer lib to make an interactive template context viewer
 - Test more advanced use cases in services
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
 - Handle rejected promises on boot

@@ -55,6 +55,12 @@ module.exports = {
           'postcss-loader'
         ]
       },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          { loader: 'url-loader', options: { limit: 100000 } }
+        ]
+      },
       // Remove the massive Unicode table pulled in by the `slug` package.
       // https://www.npmjs.com/package/slug
       // https://stackoverflow.com/questions/41873334/webpack-browserify-ignore-equivalent

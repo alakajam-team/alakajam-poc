@@ -9,7 +9,7 @@
   <div id="app">
     <h1>Welcome to <span v-cloak>${siteName}</span></h1>
     
-    <p>Server started <b>{{ launchTime | relativeTime }}</b></p>
+    <p><span class="fas fa-wrench"></span> Server started <b>{{ launchTime | relativeTime }}</b></p>
     
     <h2>Site name: <input v-model="siteName" /></h2>
 
