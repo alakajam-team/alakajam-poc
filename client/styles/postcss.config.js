@@ -1,7 +1,10 @@
 module.exports = {
   plugins: {
     'postcss-import': {},
-    'postcss-preset-env': {},
+    'postcss-preset-env': {
+      stage: 3,
+      browsers: ['last 2 versions', '> 5%'],
+    },
     'cssnano': {}
   }
 }

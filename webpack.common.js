@@ -60,14 +60,16 @@ module.exports = {
       // https://stackoverflow.com/questions/41873334/webpack-browserify-ignore-equivalent
       {
         test: /unicode\/category\/So\.js$/,
-        use: [{ loader: 'null-loader' }]
+        use: [
+          { loader: 'null-loader' }
+        ]
       }
     ]
   },
   context: __dirname,
   target: 'web',
   plugins: [
-      new CheckerPlugin()
+    new CheckerPlugin()
   ],
   // https://webpack.js.org/configuration/stats/
   stats: {
@@ -76,5 +78,8 @@ module.exports = {
     modules: false,
     performance: false,
     warnings: true
+  },
+  performance: {
+    hints: false
   }
 }

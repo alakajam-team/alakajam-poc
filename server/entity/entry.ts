@@ -1,14 +1,11 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Timestamped } from "./timestamped";
+import { Column, Entity } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
+import { Node } from "./node";
 
 @Entity()
-export class Entry extends Timestamped {
-
-  @PrimaryGeneratedColumn()
-  public id: number;
+export class Entry extends Node {
 
   @Column(ColumnTypesUtils.varchar({ nullable: true }))
   public title: string;

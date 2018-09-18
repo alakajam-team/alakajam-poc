@@ -1,1 +1,2 @@
-import css from "./general.pcss"
+import "./external.pcss"
+import "./general.pcss"

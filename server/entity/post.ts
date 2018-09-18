@@ -1,16 +1,12 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
-import { Entry } from "./entry";
+import { Node } from "./node";
 import { User } from "./user";
-import { Timestamped } from "./timestamped";
 
 @Entity()
-export class Post extends Timestamped {
-
-  @PrimaryGeneratedColumn()
-  public id: number;
+export class Post extends Node {
 
   @Column(ColumnTypesUtils.varchar())
   public name: string;
@@ -23,9 +19,6 @@ export class Post extends Timestamped {
 
   @Column(ColumnTypesUtils.varchar({ nullable: true }))
   public special_post_type: string;
-
-  @Column({ nullable: true }) // TODO Not null default 0
-  public comment_count: number;
 
   @Column(ColumnTypesUtils.dateTime({ nullable: true }))
   @Index()

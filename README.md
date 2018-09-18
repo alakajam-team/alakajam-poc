@@ -47,6 +47,7 @@ Put this in your `.vscode/launch.json`:
 
 ### Little TODOs
 
+- Figure out morph relations with TypeORM
 - Test more advanced use cases in services
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
 - Handle rejected promises on boot
@@ -64,6 +65,7 @@ Put this in your `.vscode/launch.json`:
 - [ ] Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
+- [ ] **[WIP!]** Get rid of the unmaintained Bootflat
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 
 ### Code upgrade
