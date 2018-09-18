@@ -6,11 +6,6 @@ import { Entry } from "./entry";
 import { User } from "./user";
 import { Timestamped } from "./timestamped";
 
-/**
- * TODO Differences with current tables:
- * - No varying(255), only varying, is it ok?
- * - Differing constraint names, is it ok?
- */
 @Entity()
 export class Post extends Timestamped {
 

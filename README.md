@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/alakajam-team/alakajam-poc/master/static/images/logo-v2.png" />
 
-An early proof of concept for an improved Alakajam! site architecture.
+A proof of concept for an improved Alakajam! site architecture. The goal is to eventually expand it into a new major version of the website.
 
 ## Initial setup
 
@@ -33,7 +33,7 @@ Put this in your `.vscode/launch.json`:
       "name": "Debug Alakajam!",
       "type": "node",
       "request": "launch",
-      "args": ["${workspaceFolder}\\server\\index.ts"],
+      "args": ["${workspaceFolder}\\server\\index.ts", "patch-ormconfig-ts-node"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
@@ -49,11 +49,12 @@ Put this in your `.vscode/launch.json`:
 
 - Test more advanced use cases in services
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
+- Handle rejected promises on boot
 
 ### Big TODOs
 
 - [x] Switch to TypeScript
-- [ ] **[WIP!]** Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
+- [x] Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
 - [ ] **[WIP!]** Better organization of service layers 
 - [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
 - [ ] Database migrations (switch to TypeORM?)

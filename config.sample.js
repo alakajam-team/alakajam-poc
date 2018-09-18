@@ -7,7 +7,7 @@ module.exports = {
   clientBuild: "never", // never|startup|watch
 
   // Debug: trace options
-  logLevel: "debug",
+  logLevel: "info", // none|error|warn|info|debug
   debugTraceRequests: false, // Traces all HTTP requests
 
   // TypeORM: Database config
@@ -25,7 +25,7 @@ module.exports = {
   logging: false, // Traces all SQL calls
   entities: [ "dist/server/entity/*.*" ],
   migrations: [ "dist/server/migration/*.*" ],
-  synchronize: false,
+  synchronize: true, // TODO Implement DB init migration
   migrationsTableName: "migration",
   migrationsRun: true,
   cli: {

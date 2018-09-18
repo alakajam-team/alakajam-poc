@@ -2,6 +2,7 @@
 
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Timestamped } from "./timestamped";
+import { ColumnTypesUtils } from "./entity-utils";
 
 @Entity()
 export class Entry extends Timestamped {
@@ -9,10 +10,10 @@ export class Entry extends Timestamped {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
+  @Column(ColumnTypesUtils.varchar({ nullable: true }))
   public title: string;
 
-  @Column()
+  @Column(ColumnTypesUtils.varchar({ length: 2000, nullable: true }))
   public description: string;
 
 }

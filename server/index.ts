@@ -23,7 +23,7 @@ import constants from "./constants";
   }
 
   // Initialize DB connection
-  await db.connect(config);
+  await db.connect();
 
   // Initialize environment info
   const environmentImpl = environment as EnvironmentImpl;
@@ -39,6 +39,7 @@ import constants from "./constants";
   if (patchedOrmConfigTsNode) {
     log.info("ts-node compatibility: patched config so that TypeORM uses the original entities and migrations");
   }
+  log.debug("Connected to database with settings:", config);
 
   // Launch server
   const app = require("./core/app").default;

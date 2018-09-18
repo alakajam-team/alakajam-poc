@@ -1,10 +1,14 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn, OneToOne, JoinColumn } from "typeorm";
 import { ColumnTypesUtils } from "./entity-utils";
 import { Post } from "./post";
 import { Timestamped } from "./timestamped";
+import { UserDetails } from "./userdetails";
 
+/**
+ * User account information.
+ */
 @Entity()
 export class User extends Timestamped {
 
@@ -40,6 +44,9 @@ export class User extends Timestamped {
 
   @Column({ nullable: true })
   public notifications_last_read: Date;
+
+  @OneToOne((type) => UserDetails, (userDetails) => userDetails.user, { nullable: false })
+  public details: UserDetails;
 
   @OneToMany((type) => Post, (post) => post.user)
   public posts: Post[];

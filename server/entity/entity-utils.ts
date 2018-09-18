@@ -19,3 +19,5 @@ export class ColumnTypesUtils {
   }
 
 }
+
+export type NodeType = "entry" | "post";
