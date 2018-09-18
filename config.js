@@ -25,7 +25,7 @@ module.exports = {
   logging: false, // Traces all SQL calls
   entities: [ "dist/server/entity/*.*" ],
   migrations: [ "dist/server/migration/*.*" ],
-  synchronize: true,
+  synchronize: false,
   migrationsTableName: "migration",
   migrationsRun: true,
   cli: {

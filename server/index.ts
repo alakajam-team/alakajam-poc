@@ -27,7 +27,7 @@ import constants from "./constants";
 
   // Initialize environment info
   const environmentImpl = environment as EnvironmentImpl;
-  environmentImpl.name = (process.env.NODE_ENV === "development") ? "development" : "production";
+  environmentImpl.name = (process.env.NODE_ENV === "production") ? "production" : "development";
   environmentImpl.launchTime = launchTime;
 
   // We can now start require()-ing our sources

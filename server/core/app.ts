@@ -69,7 +69,7 @@ export class App {
     // Listen to port
     app.listen(config.serverPort, () => {
       const launchSeconds = (Date.now() - environment.launchTime) / 1000;
-      log.warn(`Server launched in ${launchSeconds.toFixed(1)}s on port ${config.serverPort}.`);
+      log.warn(`Server launched in ${environment.name} mode on port ${config.serverPort} (took ${launchSeconds.toFixed(1)}s).`);
       if (process.send) {
         // browser-refresh event
         process.send("online");

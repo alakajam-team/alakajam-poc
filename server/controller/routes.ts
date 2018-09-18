@@ -11,7 +11,8 @@ export function initRoutes(app: express.Express): void {
     router.use("/static", express.static(path.join(constants.PATH_SOURCES_ROOT, "dist/client")));
     router.use("/static", express.static(path.join(constants.PATH_SOURCES_ROOT, "static")));
 
-    router.use("/$", mainController.index);
+    router.get("/$", mainController.index);
+    router.post("/$", mainController.deleteEntries);
 
     router.use(mainController.notFound);
 }

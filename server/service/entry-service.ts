@@ -11,12 +11,16 @@ export class EntryService {
   public async getAll(): Promise<Entry[]> {
     return this.repository.find();
   }
-
+  
   @Transaction()
   public create(properties: DeepPartial<Entry>, @TransactionManager() manager?: EntityManager): Promise<Entry> {
     const entryRepository = manager.getRepository(Entry);
     const entry = entryRepository.create(properties);
     return entryRepository.save(entry);
+  }
+
+  public async deleteAll(): Promise<void> {
+    await this.repository.delete({});
   }
 
 }

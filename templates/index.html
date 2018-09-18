@@ -7,24 +7,39 @@
 </head>
 <body>
   <div id="app">
-    <h1>Welcome to <span v-cloak>${siteName}</span></h1>
-    
-    <p><span class="fas fa-wrench"></span> Server started <b>{{ launchTime | relativeTime }}</b></p>
-    
-    <h2>Site name: <input v-model="siteName" /></h2>
+    <h1 class="text-center"><img src="static/images/logo-v2.png" /></h1>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <h2>Welcome to <span v-cloak>${siteName}</span></h2>
+          <p><span class="fas fa-wrench"></span> Server started <b>{{ launchTime | relativeTime }}</b></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <form class="form-inline"> 
+            <h2>Site name: <input v-model="siteName" class="form-control" /></h2>
+          </form>
+        </div>
+        <div class="col-md">
+          <h2>Entries: {{ entries.length }}</h2>
+          One entry is created (up to 5) upon every page view.
+          <ul>
+            {% for entry in entries %}
+              <li>
+                <b>{{ entry.title }}</b>
+                {{ (' | ' + entry.description) if entry.description }}
+              </li>
+            {% endfor %}
+          </ul>
+          <form method="post">
+            <button class="btn btn-secondary" type="submit">Delete all</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-    <h2>Entries: {{ entries.length }}</h2>
-
-    <ul>
-      {% for entry in entries %}
-        <li>
-          <b>{{ entry.title }}</b>
-          {{ (' | ' + entry.description) if entry.description }}
-        </li>
-      {% endfor %}
-    </ul>
-
-    <img src="static/images/logo-v2.png" />
   </div>
   <script src="static/scripts/index.js"></script>
 </body>
