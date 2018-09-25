@@ -68,6 +68,7 @@ Put this in your `.vscode/launch.json`:
 - [ ] [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
+- [ ] Consider organizing folders by subject (entry, post, etc.) rather than layer
 
 ### Code upgrade
 
