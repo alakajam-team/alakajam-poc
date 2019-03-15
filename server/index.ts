@@ -6,6 +6,7 @@ import config, { ConfigService } from "./config";
 import constants from "./constants";
 import db from "./core/db";
 import environment, { EnvironmentImpl } from "./environment";
+import { AdvancedConsoleLogger } from "typeorm";
 
 (async () => {
 
@@ -44,5 +45,7 @@ import environment, { EnvironmentImpl } from "./environment";
   // Launch server
   const app = require("./core/app").default;
   app.launch();
+
+  process.on("unhandledRejection", (e) => log.error(e));
 
 })();

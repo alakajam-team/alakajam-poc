@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import entryService from "../service/entry-service";
+import entryService from "../service/entry/entry-service";
 
-export async function index(req: Request, res: Response, next: NextFunction) {
+export async function index(req: Request, res: Response) {
   let entries = await entryService.getAll();
 
   if (entries.length < 5) {
@@ -18,11 +18,11 @@ export async function index(req: Request, res: Response, next: NextFunction) {
   });
 }
 
-export async function deleteEntries(req: Request, res: Response, next: NextFunction) {
+export async function deleteEntries(req: Request, res: Response) {
   await entryService.deleteAll();
   res.redirect("/");
 }
 
-export async function notFound(req: Request, res: Response, next: NextFunction) {
+export async function notFound(req: Request, res: Response) {
   res.render("404");
 }

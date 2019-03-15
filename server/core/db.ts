@@ -1,4 +1,4 @@
-import { Connection, ConnectionOptions, createConnection } from "typeorm";
+import { Connection, createConnection } from "typeorm";
 import config from "../config";
 
 /**

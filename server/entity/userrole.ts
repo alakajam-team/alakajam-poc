@@ -1,8 +1,10 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { ColumnTypesUtils, NodeType } from "./entity-utils";
 import { Timestamped } from "./timestamped";
+import { Entry } from "./entry";
+import { Post } from "./post";
 
 export type Permission = "read" | "write" | "manage";
 
@@ -32,5 +34,12 @@ export class UserRole extends Timestamped {
 
   @Column(ColumnTypesUtils.varchar())
   public permission: Permission;
+  
+/*
+  @OneToMany((type) => Entry, (entry) => entry.userRoles)
+  public entry: Entry;
+
+  @OneToMany((type) => Post, (post) => post.userRoles)
+  public post: Post;*/
 
 }

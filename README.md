@@ -34,7 +34,7 @@ Put this in your `.vscode/launch.json`:
       "type": "node",
       "request": "launch",
       "args": ["${workspaceFolder}\\server\\index.ts", "patch-ormconfig-ts-node"],
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",

@@ -20,7 +20,7 @@ import constants from "../constants";
  * A logger that uses Winston under the hood,
  * prepending the output with the log level and location in the code.
  */
-export class Log {
+class Log {
   public winstonInstance: winston.LoggerInstance;
 
   /**

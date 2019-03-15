@@ -1,5 +1,6 @@
 import { DeepPartial, EntityManager, getRepository, Repository, Transaction, TransactionManager } from "typeorm";
-import { Entry } from "../entity/entry";
+
+import { Entry } from "server/entity/entry";
 
 export class EntryService {
   private repository: Repository<Entry>;
@@ -9,7 +10,7 @@ export class EntryService {
   }
 
   public async getAll(): Promise<Entry[]> {
-    return this.repository.find();
+    return this.repository.find({ relations: [ "userRoles" ]});
   }
 
   @Transaction()
