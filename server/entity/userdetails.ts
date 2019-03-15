@@ -1,8 +1,8 @@
 /* tslint:disable:variable-name */
 
-import {Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
 
 /**
  * Extended user information, mostly containing the user profile page.

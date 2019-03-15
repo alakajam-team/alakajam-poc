@@ -1,7 +1,7 @@
 /* tslint:disable:variable-name */
 
 import { CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
 
 export abstract class Timestamped {
 

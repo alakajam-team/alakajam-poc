@@ -1,27 +1,27 @@
-import { DeepPartial, EntityManager, getRepository, Repository, Transaction, TransactionManager } from "typeorm";
-
 import { Entry } from "server/entity/entry";
+import { UserRoleEntry } from "server/entity/userroleentry";
+import { EntryRepository } from "server/repository/entry-repository";
+import { getCustomRepository, getRepository } from "typeorm";
+
+const entryRepository = getCustomRepository(EntryRepository);
+const userRoleEntryRepository = getRepository(UserRoleEntry);
 
 export class EntryService {
-  private repository: Repository<Entry>;
 
-  constructor() {
-    this.repository = getRepository(Entry);
-  }
-
-  public async getAll(): Promise<Entry[]> {
-    return this.repository.find({ relations: [ "userRoles" ]});
-  }
-
-  @Transaction()
-  public create(properties: DeepPartial<Entry>, @TransactionManager() manager?: EntityManager): Promise<Entry> {
-    const entryRepository = manager.getRepository(Entry);
-    const entry = entryRepository.create(properties);
-    return entryRepository.save(entry);
-  }
-
-  public async deleteAll(): Promise<void> {
-    await this.repository.delete({});
+  public async generateEntry(): Promise<void> {
+    const entryCount = await entryRepository.count();
+    if (entryCount < 5) {
+      const entry = entryRepository.create({
+        title: "Awesome game " + (entryCount + 1),
+        description: "A really awesome game",
+      });
+  /*    entry.userRoles = [
+        userRoleEntryRepository.create({
+          userTitle: "bob",
+        }),
+      ];*/
+      await entryRepository.save(entry);
+    }
   }
 
 }

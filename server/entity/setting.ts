@@ -1,8 +1,8 @@
 /* tslint:disable:variable-name */
 
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
 import { Timestamped } from "./timestamped";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
 
 /**
  * Site-wide setting.

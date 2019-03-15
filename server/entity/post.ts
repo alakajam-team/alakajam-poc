@@ -1,10 +1,10 @@
 /* tslint:disable:variable-name */
 
-import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
+import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { Node } from "./node";
 import { User } from "./user";
-import { UserRole } from "./userrole";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
+import { UserRolePost } from "./userrolepost";
 
 @Entity()
 export class Post extends Node {
@@ -35,15 +35,8 @@ export class Post extends Node {
   @JoinColumn({ name: "author_user_id" })
   public user: User;
 
- /* @OneToMany(type => UserRole, userRole => userRole.post)
-  @JoinColumn({
-    referencedColumnName: "node_id",
-  })
-  public userRoles: UserRole[];*/
-  
-  // TODO Relations: entry, event
-  /*@ManyToOne(type => Entry, entry => entry.posts)
-  @JoinColumn({ name: "entry_id" })
-  public entry: User;*/
+  @OneToMany(() => UserRolePost, (userRole) => userRole.post, { cascade: true })
+  @JoinColumn({ referencedColumnName: "node_id" })
+  public userRoles: UserRolePost[];
 
 }

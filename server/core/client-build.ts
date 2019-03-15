@@ -24,7 +24,7 @@ class ClientBuild {
 
     const webpackConfig = require(path.join(
       constants.PATH_SOURCES_ROOT,
-      "webpack." + environment,
+      "webpack." + environment.name,
     ));
 
     await this.createFolderIfMissing(path.join(constants.PATH_SOURCES_ROOT, webpackConfig.output.path));

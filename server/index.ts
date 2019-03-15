@@ -2,11 +2,11 @@ const launchTime = Date.now();
 
 import * as path from "path";
 import "reflect-metadata";
+import { AdvancedConsoleLogger } from "typeorm";
 import config, { ConfigService } from "./config";
 import constants from "./constants";
 import db from "./core/db";
 import environment, { EnvironmentImpl } from "./environment";
-import { AdvancedConsoleLogger } from "typeorm";
 
 (async () => {
 

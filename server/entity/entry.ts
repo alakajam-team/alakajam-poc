@@ -1,7 +1,7 @@
-import { Column, Entity, OneToMany, JoinColumn } from "typeorm";
-import { ColumnTypesUtils } from "./entity-utils";
+import { Column, Entity, JoinColumn, OneToMany } from "typeorm";
 import { Node } from "./node";
-import { UserRole } from "./userrole";
+import { UserRoleEntry } from "./userroleentry";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
 
 @Entity()
 export class Entry extends Node {
@@ -10,13 +10,10 @@ export class Entry extends Node {
   public title: string;
 
   @Column(ColumnTypesUtils.varchar({ length: 2000, nullable: true }))
-  public description: string;
-/*
-  @OneToMany(type => UserRole, userRole => userRole.entry)
-  @JoinColumn({
-  //  referencedColumnName: "node_id",
+  public description?: string;
 
-  })
-  public userRoles: UserRole[];
-*/
+  @OneToMany(() => UserRoleEntry, (userRole) => userRole.entry, { cascade: true })
+  @JoinColumn({ referencedColumnName: "node_id" })
+  public userRoles: UserRoleEntry[];
+
 }
