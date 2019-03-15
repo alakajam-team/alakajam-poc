@@ -69,6 +69,7 @@ Put this in your `.vscode/launch.json`:
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Consider organizing folders by subject (entry, post, etc.) rather than layer
+- [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
 
 ### Code upgrade
 
