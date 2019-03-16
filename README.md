@@ -47,25 +47,23 @@ Put this in your `.vscode/launch.json`:
 
 ### Little TODOs
 
-- Figure out morph relations with TypeORM
-- Try to use the Vue tree viewer lib to make an interactive template context viewer
 - Test more advanced use cases in services
-- Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
+- Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?). Or should we remove CSS from Webpack?
 - Handle rejected promises on boot
 
 ### Big TODOs
 
 - [x] Switch to TypeScript
 - [x] Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
-- [ ] **[WIP!]** Better organization of service layers 
+- [x] Better organization of service layers 
 - [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
-- [ ] Database migrations (switch to TypeORM?)
+- [x] Database migrations (switch to TypeORM?)
 - [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
 - [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
-- [ ] Easier testing, better test coverage
-- [ ] Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
+- [ ] Easier testing: fast unit tests, Cypress regression testing
+- [ ] Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states, also consider embedding them in a single JSON field)
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
-- [ ] [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
+- [ ] **[WIP!]** [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Consider organizing folders by subject (entry, post, etc.) rather than layer
