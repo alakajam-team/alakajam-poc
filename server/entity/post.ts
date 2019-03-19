@@ -3,8 +3,8 @@
 import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { Node } from "./node";
 import { User } from "./user";
-import { ColumnTypesUtils } from "./utils/column-type-utils";
 import { UserRolePost } from "./userrolepost";
+import { ColumnTypesUtils } from "./utils/column-type-utils";
 
 @Entity()
 export class Post extends Node {

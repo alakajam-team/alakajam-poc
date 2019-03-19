@@ -47,6 +47,7 @@ Put this in your `.vscode/launch.json`:
 
 ### Little TODOs
 
+- Fix Mocha unit tests, to support mocking TypeORM repositories
 - Test more advanced use cases in services (to ensure morph relations are still manageable the current way)
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
 - Figure out import resolution graal: no '../../../'s + resolution at runtime with plain TSC + VSCode can still follow the imports
@@ -66,6 +67,7 @@ Put this in your `.vscode/launch.json`:
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
+- [ ] Look into [Nest](https://github.com/nestjs/nest) for good practices
 
 
 ### Code upgrade

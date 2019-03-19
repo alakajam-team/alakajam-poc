@@ -39,7 +39,7 @@ import environment, { EnvironmentImpl } from "./environment";
 
   // We can now start require()-ing our sources
   // If we did earlier, they would have used uninitialized versions of the config/DB/environment.
-  
+
   // Initialization output
   const log = require("./core/log").default;
   configWarnings.map((warning) => log.warn(warning.message));

@@ -15,7 +15,7 @@ export class EntryService {
         description: "A really awesome game",
       });
   /*    entry.userRoles = [
-        userRoleEntryRepository.create({
+        this.userRoleEntryRepository.create({
           userTitle: "bob",
         }),
       ];*/
@@ -25,4 +25,6 @@ export class EntryService {
 
 }
 
-export default new EntryService();
+export default new EntryService(
+  getCustomRepository(EntryRepository),
+  getRepository(UserRoleEntry));
