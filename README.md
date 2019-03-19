@@ -49,7 +49,7 @@ Put this in your `.vscode/launch.json`:
 
 - Fix Mocha unit tests, to support mocking TypeORM repositories
 - Test more advanced use cases in services (to ensure morph relations are still manageable the current way)
-- Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
+- Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?). Or should we remove CSS from Webpack?
 - Figure out import resolution graal: no '../../../'s + resolution at runtime with plain TSC + VSCode can still follow the imports
 
 ### Big TODOs
@@ -58,12 +58,12 @@ Put this in your `.vscode/launch.json`:
 - [x] Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
 - [x] Database migrations (switch to TypeORM)
 - [x] Consider organizing folders by subject (entry, post, etc.) more than just by layer
-- [ ] **[WIP!]** Better organization of service layers 
+- [x] Better organization of service layers 
 - [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
 - [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
+- [ ] **[WIP!]** Easier testing, better test coverage
 - [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
-- [ ] Easier testing, better test coverage
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
@@ -77,7 +77,7 @@ Put this in your `.vscode/launch.json`:
 
 ### Won't do for now
 
-- Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
+- Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states, also consider embedding them in a single JSON field)
 - [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280) (will upgrade docs when V2 is ready)
 
 ## Troubleshooting 
