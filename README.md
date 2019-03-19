@@ -59,10 +59,10 @@ Put this in your `.vscode/launch.json`:
 - [x] Database migrations (switch to TypeORM)
 - [x] Consider organizing folders by subject (entry, post, etc.) more than just by layer
 - [x] Better organization of service layers 
+- [x] Easier testing, better test coverage
 - [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
 - [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
-- [ ] **[WIP!]** Easier testing, better test coverage
 - [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
 - [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)

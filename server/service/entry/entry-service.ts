@@ -2,15 +2,17 @@ import { UserRoleEntry } from "server/entity/userroleentry";
 import { EntryRepository } from "server/service/entry/entry-repository";
 import { getCustomRepository, getRepository } from "typeorm";
 
-const entryRepository = getCustomRepository(EntryRepository);
-const userRoleEntryRepository = getRepository(UserRoleEntry);
-
 export class EntryService {
 
+  constructor(
+    private entryRepository = getCustomRepository(EntryRepository),
+    private userRoleEntryRepository = getRepository(UserRoleEntry),
+  ) {}
+
   public async generateEntry(): Promise<void> {
-    const entryCount = await entryRepository.count();
+    const entryCount = await this.entryRepository.count();
     if (entryCount < 5) {
-      const entry = entryRepository.create({
+      const entry = this.entryRepository.create({
         title: "Awesome game " + (entryCount + 1),
         description: "A really awesome game",
       });
@@ -19,12 +21,10 @@ export class EntryService {
           userTitle: "bob",
         }),
       ];*/
-      await entryRepository.save(entry);
+      await this.entryRepository.save(entry);
     }
   }
 
 }
 
-export default new EntryService(
-  getCustomRepository(EntryRepository),
-  getRepository(UserRoleEntry));
+export default new EntryService();
