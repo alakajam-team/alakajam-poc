@@ -1,26 +1,22 @@
 import { Request, Response } from "express";
-import entryService from "../service/entry/entry-service";
-import { getCustomRepository } from "typeorm";
 import { EntryRepository } from "server/repository/entry-repository";
+import { getCustomRepository } from "typeorm";
+import entryService from "../../service/entry/entry-service";
 
 const entryRepository = getCustomRepository(EntryRepository);
 
-export async function index(req: Request, res: Response) {
+export async function homeGet(req: Request, res: Response) {
   await entryService.generateEntry();
   const entries = await entryRepository.find();
 
-  res.render("index", {
+  res.render("home/home", {
     name: "Alakajam!",
     entries,
   });
 }
 
-export async function deleteEntries(req: Request, res: Response) {
+export async function homePost(req: Request, res: Response) {
   await entryRepository.deleteAll();
 
   res.redirect("/");
-}
-
-export async function notFound(req: Request, res: Response) {
-  res.render("404");
 }

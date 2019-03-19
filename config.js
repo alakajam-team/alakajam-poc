@@ -22,7 +22,7 @@ module.exports = {
   database: "alakajam_v2",
 
   // TypeORM: File layout, migrations
-  logging: true, // Traces all SQL calls
+  logging: false, // Traces all SQL calls
   entities: [ "dist/server/entity/*.*" ],
   migrations: [ "dist/server/migration/*.*" ],
   synchronize: true,

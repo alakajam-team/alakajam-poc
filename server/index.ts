@@ -2,18 +2,20 @@ const launchTime = Date.now();
 
 import * as path from "path";
 import "reflect-metadata";
-import { AdvancedConsoleLogger } from "typeorm";
 import config, { ConfigService } from "./config";
 import constants from "./constants";
+import clientBuild from "./core/client-build";
 import db from "./core/db";
 import environment, { EnvironmentImpl } from "./environment";
 
 (async () => {
 
-  // Initialize app config
+  // Initialize server config
   const configWarnings = await ConfigService.loadFromFile(
     path.join(constants.PATH_SOURCES_ROOT, "config.js"),
     { createIfMissing: true });
+
+  // Initialize DB connection
   let patchedOrmConfigTsNode = false;
   if (process.argv.includes("patch-ormconfig-ts-node")) {
     await ConfigService.load({
@@ -22,8 +24,6 @@ import environment, { EnvironmentImpl } from "./environment";
     });
     patchedOrmConfigTsNode = true;
   }
-
-  // Initialize DB connection
   await db.connect();
 
   // Initialize environment info
@@ -42,10 +42,15 @@ import environment, { EnvironmentImpl } from "./environment";
   }
   log.debug("Connected to database with settings:", config);
 
-  // Launch server
-  const app = require("./core/app").default;
-  app.launch();
-
+  // Uncaught errors
+  process.on("uncaughtException", (e) => log.error(e));
   process.on("unhandledRejection", (e) => log.error(e));
+
+  // Configure client build
+  await clientBuild.configure();
+
+  // Launch server
+  const app = require("./core/app");
+  app.launch();
 
 })();
