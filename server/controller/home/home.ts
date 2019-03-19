@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { EntryRepository } from "server/repository/entry-repository";
+import { EntryRepository } from "server/service/entry/entry-repository";
 import { getCustomRepository } from "typeorm";
 import entryService from "../../service/entry/entry-service";
 

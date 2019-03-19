@@ -47,34 +47,35 @@ Put this in your `.vscode/launch.json`:
 
 ### Little TODOs
 
-- Figure out morph relations with TypeORM
-- Try to use the Vue tree viewer lib to make an interactive template context viewer
-- Test more advanced use cases in services
+- Test more advanced use cases in services (to ensure morph relations are still manageable the current way)
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
-- Handle rejected promises on boot
 
 ### Big TODOs
 
 - [x] Switch to TypeScript
 - [x] Improve and make TypeScript-compatible the models code (by either more integration to Bookshelf, ie. extending BaseModel, or switching from Bookshelf to another ORM like TypeORM or Sequelize)
+- [x] Database migrations (switch to TypeORM)
+- [x] Consider organizing folders by subject (entry, post, etc.) more than just by layer
 - [ ] **[WIP!]** Better organization of service layers 
-- [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
-- [ ] Database migrations (switch to TypeORM?)
 - [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
 - [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
-- [ ] Easier testing, better test coverage
-- [ ] Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
-- [ ] Make template development easier (comment conventions, in-page tool to explore available context)
-- [ ] [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
+- [ ] Remove business logic from controllers (possibly even not expose the models?) / Consistent pattern for forms handling
+- [ ] Easier testing, better test coverage
+- [ ] Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
-- [ ] Consider organizing folders by subject (entry, post, etc.) rather than layer
 - [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
+
 
 ### Code upgrade
 
 * `promisify-node` can be replaced with the now native `util.promisify()`
 * Rename `.css` files to `.pcss` for correct code highlighting (in Visual Studio Code in particular)
+
+### Won't do for now
+
+- Refactor event status flags (use feature flags - possibly controlled by event states - rather than toggle features directly with states)
+- [Wiki documentation](https://github.com/alakajam-team/alakajam/issues/280) (will upgrade docs when V2 is ready)
 
 ## Troubleshooting 
 

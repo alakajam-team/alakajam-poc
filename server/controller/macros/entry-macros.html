@@ -1,0 +1,5 @@
+<!-- Displays entry information -->
+{% macro entryInfo(entry) %}
+  <b>{{ entry.title }}</b>
+  {{ (' | ' + entry.description) if entry.description }}
+{% endmacro %}

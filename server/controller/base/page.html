@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Alakajam!</title>
+    <script src="static/scripts/styles.js"></script>
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="text-center"><img src="static/images/logo-v2.png"/></h1>
+      {% block body %}{% endblock %}
+    </div>
+    <script src="static/scripts/index.js"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

@@ -1,6 +1,5 @@
-import { Entry } from "server/entity/entry";
 import { UserRoleEntry } from "server/entity/userroleentry";
-import { EntryRepository } from "server/repository/entry-repository";
+import { EntryRepository } from "server/service/entry/entry-repository";
 import { getCustomRepository, getRepository } from "typeorm";
 
 const entryRepository = getCustomRepository(EntryRepository);
