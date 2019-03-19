@@ -2,11 +2,11 @@
 import * as fs from "fs";
 import * as mkdirp from "mkdirp";
 import * as path from "path";
-import config from "server/config";
-import constants from "server/constants";
-import environment from "server/environment";
 import * as util from "util";
 import * as webpack from "webpack";
+import config from "../config";
+import constants from "../constants";
+import environment from "../environment";
 import log from "./log";
 
 const fsAccessPromise = util.promisify(fs.access);

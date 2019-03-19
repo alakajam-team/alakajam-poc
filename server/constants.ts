@@ -4,9 +4,10 @@
  * @module constants
  */
 
+import { sync as findUpSync } from "find-up";
 import * as path from "path";
 
-const PATH_SOURCES_ROOT = path.join(__dirname, "..");
+const PATH_SOURCES_ROOT = path.dirname(findUpSync("package.json"));
 
 export default {
   PATH_SOURCES_ROOT,

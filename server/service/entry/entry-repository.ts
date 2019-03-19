@@ -1,6 +1,5 @@
 import { Entry } from "server/entity/entry";
-import { User } from "server/entity/user";
-import { DeepPartial, EntityManager, EntityRepository, Repository, Transaction, TransactionManager } from "typeorm";
+import { EntityRepository, Repository } from "typeorm";
 
 @EntityRepository(Entry)
 export class EntryRepository extends Repository<Entry> {

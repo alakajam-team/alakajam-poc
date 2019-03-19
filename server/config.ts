@@ -5,7 +5,6 @@
  */
 
 import * as fs from "fs";
-import { ConfigureOptions } from "nunjucks";
 import * as optionalRequire from "optional-require";
 import * as path from "path";
 import { ConnectionOptions } from "typeorm";

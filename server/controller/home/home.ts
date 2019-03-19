@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { EntryRepository } from "server/service/entry/entry-repository";
+import entryService from "server/service/entry/entry-service";
 import { getCustomRepository } from "typeorm";
-import entryService from "../../service/entry/entry-service";
 
 const entryRepository = getCustomRepository(EntryRepository);
 

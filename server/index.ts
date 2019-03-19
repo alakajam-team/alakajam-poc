@@ -1,5 +1,11 @@
 const launchTime = Date.now();
 
+if (__filename.includes(".js")) {
+  // Fix root-relative import paths from build
+  // tslint:disable-next-line: no-var-requires
+  require("module-alias/register");
+}
+
 import * as path from "path";
 import "reflect-metadata";
 import config, { ConfigService } from "./config";
@@ -33,7 +39,7 @@ import environment, { EnvironmentImpl } from "./environment";
 
   // We can now start require()-ing our sources
   // If we did earlier, they would have used uninitialized versions of the config/DB/environment.
-
+  
   // Initialization output
   const log = require("./core/log").default;
   configWarnings.map((warning) => log.warn(warning.message));

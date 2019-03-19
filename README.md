@@ -49,6 +49,7 @@ Put this in your `.vscode/launch.json`:
 
 - Test more advanced use cases in services (to ensure morph relations are still manageable the current way)
 - Find a way to optimize Webpack builds (why does rebuilding CSS currently imply rebuilding the TypeScript? could we put the libraries in a different build?)
+- Figure out import resolution graal: no '../../../'s + resolution at runtime with plain TSC + VSCode can still follow the imports
 
 ### Big TODOs
 
