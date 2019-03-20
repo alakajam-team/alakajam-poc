@@ -60,6 +60,7 @@ Put this in your `.vscode/launch.json`:
 - [x] Consider organizing folders by subject (entry, post, etc.) more than just by layer
 - [x] Better organization of service layers 
 - [x] Easier testing, better test coverage
+- [x] Put tests in CI
 - [ ] **[WIP!]** Set up improved toolchain for JS/CSS build (faster build in development, faster boot in production)
 - [ ] **[WIP!]** Improve the files layout (data/uploads folders, static assets in/out folders, template macros, explode core/models.js)
 - [ ] **[WIP!]** Get rid of the unmaintained Bootflat
@@ -67,8 +68,8 @@ Put this in your `.vscode/launch.json`:
 - [ ] **[WIP!]** Make template development easier (comment conventions, in-page tool to explore available context)
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
-- [ ] Look into [Nest](https://github.com/nestjs/nest) for good practices
-- [ ] Put tests in CI
+- [ ] Look into [Nest](https://github.com/nestjs/nest) for good practices (eg. using [class-validator](https://github.com/typestack/class-validator) for form validation)
+- [ ] Have a `framework` folder encapsulate the more complex, non-Alakajam specific technical stuff
 
 
 ### Code upgrade
