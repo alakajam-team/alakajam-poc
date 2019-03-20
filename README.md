@@ -2,6 +2,8 @@
 
 A proof of concept for an improved Alakajam! site architecture. The goal is to eventually expand it into a new major version of the website.
 
+[![CircleCI](https://circleci.com/gh/alakajam-team/alakajam-poc.svg?style=svg)](https://circleci.com/gh/alakajam-team/alakajam-poc)
+
 ## Initial setup
 
 1. **Install dependencies**: `npm install && npm install -g typescript tslint`
@@ -66,6 +68,7 @@ Put this in your `.vscode/launch.json`:
 - [ ] Try simplifying dependencies (client-side: code editors, icons, etc.)
 - [ ] Use native events to solve some spagetthi code (eg. attaching entries to posts, sync'ing tournament scores etc.)
 - [ ] Look into [Nest](https://github.com/nestjs/nest) for good practices
+- [ ] Put tests in CI
 
 
 ### Code upgrade
